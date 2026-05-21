@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ronghui Xiao - Personal Site</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        *{margin:0;padding:0;box-sizing:border-box}
+        :root{
+            --bg:#fff;--bg2:#f8faf9;--text:#1a1a1a;--text2:#555;--text3:#999;
+            --green:#2d9d78;--green-light:#e8f5f0;--green-hover:#23876a;
+            --border:#eee;--radius:10px;
+        }
+        html{scroll-behavior:smooth}
+        body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);line-height:1.8;font-size:15px;-webkit-font-smoothing:antialiased}
+
+        .side-nav{position:fixed;left:0;top:0;height:100vh;background:var(--bg);border-right:1px solid var(--border);z-index:999;display:flex;flex-direction:column;padding:2rem 0;align-items:center;width:56px;overflow:hidden;transition:width .3s cubic-bezier(.4,0,.2,1)}
+        .side-nav:hover{width:180px}
+        .side-nav .logo{width:32px;height:32px;border-radius:8px;background:var(--green);color:#fff;display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:700;margin-bottom:2.5rem;flex-shrink:0;transition:margin .3s}
+        .side-nav:hover .logo{margin-bottom:2rem}
+        .nav-items{display:flex;flex-direction:column;gap:2px;width:100%;flex:1}
+        .nav-item{display:flex;align-items:center;gap:14px;padding:0 18px;height:42px;text-decoration:none;color:var(--text3);font-size:13.5px;font-weight:500;transition:all .2s;white-space:nowrap;position:relative}
+        .nav-item::before{content:'';position:absolute;left:0;top:50%;transform:translateY(-50%);width:3px;height:0;background:var(--green);border-radius:0 2px 2px 0;transition:height .2s}
+        .nav-item:hover{color:var(--green);background:var(--green-light)}
+        .nav-item:hover::before{height:20px}
+        .nav-item.active{color:var(--green);font-weight:600}
+        .nav-item.active::before{height:20px}
+        .nav-item svg{width:18px;height:18px;flex-shrink:0;min-width:18px}
+        .nav-label{opacity:0;transition:opacity .2s .1s}
+        .side-nav:hover .nav-label{opacity:1}
+        .side-bottom{margin-top:auto;display:flex;flex-direction:column;gap:2px;width:100%}
+
+        main{margin-left:56px}
+
+        #hero{min-height:100vh;display:flex;align-items:center;padding:4rem 6rem}
+        .hero-text h1{font-size:3rem;font-weight:700;letter-spacing:-.03em;line-height:1.2;margin-bottom:.6rem}
+        .hero-text h1 em{font-style:normal;color:var(--green)}
+        .hero-sub{font-size:1.05rem;color:var(--text3);margin-bottom:1.5rem;font-weight:400}
+        .hero-desc{max-width:500px;color:var(--text2);line-height:1.9;margin-bottom:1.8rem}
+        .hero-contact{display:flex;flex-wrap:wrap;gap:.8rem 1.5rem;margin-bottom:2.2rem;color:var(--text3);font-size:.88rem}
+        .hero-contact span{display:inline-flex;align-items:center;gap:.35rem}
+        .hero-btns{display:flex;gap:.8rem}
+        .btn{display:inline-flex;align-items:center;gap:.5rem;padding:.65rem 1.6rem;border-radius:8px;font-size:.88rem;font-weight:500;text-decoration:none;transition:all .2s;font-family:inherit;border:none;cursor:pointer}
+        .btn-g{background:var(--green);color:#fff}
+        .btn-g:hover{background:var(--green-hover);transform:translateY(-1px)}
+        .btn-o{border:1px solid var(--border);color:var(--text2);background:#fff}
+        .btn-o:hover{border-color:var(--green);color:var(--green)}
+        .btn svg{width:16px;height:16px}
+
+        .section{padding:5rem 6rem;max-width:900px}
+        .section-label{font-size:.7rem;font-weight:600;letter-spacing:.15em;text-transform:uppercase;color:var(--green);margin-bottom:.6rem}
+        .section-title{font-size:1.6rem;font-weight:700;margin-bottom:2rem;letter-spacing:-.02em}
+        .divider{width:40px;height:2px;background:var(--green);margin-bottom:2rem;border-radius:1px}
+
+        .edu-card{padding:1.8rem 2rem;border:1px solid var(--border);border-radius:var(--radius);margin-bottom:1rem;background:#fff;transition:all .25s}
+        .edu-card:hover{border-color:#d0e8df;box-shadow:0 2px 16px rgba(0,0,0,.04)}
+        .edu-head{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:.3rem}
+        .edu-head h3{font-size:1.05rem;font-weight:600}
+        .edu-date{font-size:.8rem;color:var(--text3)}
+        .edu-school{color:var(--text2);font-size:.9rem;margin-bottom:.5rem}
+        .edu-tags{display:flex;gap:.4rem;margin-bottom:.4rem;flex-wrap:wrap}
+        .edu-tag{font-size:.7rem;font-weight:600;color:var(--green);background:var(--green-light);padding:.15rem .6rem;border-radius:999px}
+        .edu-detail{color:var(--text3);font-size:.85rem}
+        .edu-detail strong{color:var(--text2);font-weight:500}
+
+        .about-text{color:var(--text2);max-width:600px}
+        .about-text p{margin-bottom:1rem}
+
+        .skill-list{display:flex;flex-wrap:wrap;gap:.5rem}
+        .skill{padding:.45rem 1.1rem;border-radius:999px;font-size:.82rem;font-weight:500;color:var(--text2);background:var(--bg2);border:1px solid var(--border);transition:all .2s}
+        .skill:hover{background:var(--green);color:#fff;border-color:var(--green)}
+        .skill-category{font-size:.72rem;font-weight:600;color:var(--green);letter-spacing:.1em;text-transform:uppercase;margin:1.2rem 0 .6rem;display:block;width:100%;flex-basis:100%}
+        .skill-category:first-child{margin-top:0}
+
+        .proj{padding:1.8rem 2rem;border:1px solid var(--border);border-radius:var(--radius);margin-bottom:1rem;transition:all .25s;background:#fff}
+        .proj:hover{border-color:#d0e8df;box-shadow:0 2px 16px rgba(0,0,0,.04)}
+        .proj-head{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:.6rem}
+        .proj-head h3{font-size:1.05rem;font-weight:600}
+        .proj-duration{font-size:.78rem;color:var(--text3);font-weight:400;margin-left:.5rem}
+        .proj-section{margin-bottom:.8rem}
+        .proj-section-title{font-size:.82rem;font-weight:600;color:var(--text);margin-bottom:.4rem}
+        .proj-desc{color:var(--text2);font-size:.9rem;margin-bottom:0}
+        .proj-desc ul{list-style:none;margin:0;padding:0}
+        .proj-desc li{padding-left:1rem;position:relative;margin-bottom:.3rem;line-height:1.7}
+        .proj-desc li::before{content:'';position:absolute;left:0;top:.65rem;width:5px;height:5px;border-radius:50%;background:var(--green-light);border:1px solid var(--green)}
+        .proj-tags{display:flex;gap:.4rem;flex-wrap:wrap;margin-top:1rem}
+        .proj-tag{font-size:.72rem;font-weight:500;color:var(--green);background:var(--green-light);padding:.2rem .7rem;border-radius:999px}
+
+        .award-item{padding:.6rem 0;border-bottom:1px solid var(--border);font-size:.9rem;color:var(--text2)}
+        .award-item:last-child{border-bottom:none}
+        .award-item strong{color:var(--text);font-weight:600}
+
+        .contact-list{display:flex;gap:1rem;flex-wrap:wrap}
+        .contact-item{display:flex;align-items:center;gap:.8rem;padding:1rem 1.6rem;border:1px solid var(--border);border-radius:var(--radius);text-decoration:none;color:var(--text);transition:all .25s;min-width:180px}
+        .contact-item:hover{border-color:#d0e8df;box-shadow:0 2px 16px rgba(0,0,0,.04)}
+        .contact-item svg{width:20px;height:20px;color:var(--green);flex-shrink:0}
+        .contact-item span{font-size:.88rem;font-weight:500}
+        .contact-item small{display:block;font-size:.75rem;color:var(--text3);font-weight:400}
+
+        footer{margin-left:56px;padding:2rem 6rem;color:var(--text3);font-size:.8rem;border-top:1px solid var(--border)}
+
+        @media(max-width:768px){
+            .side-nav{width:50px}.side-nav:hover{width:50px}
+            .side-nav .nav-label{opacity:0!important}
+            main{margin-left:50px}footer{margin-left:50px}
+            #hero{padding:3rem 2rem}.section{padding:3.5rem 2rem}
+            .hero-text h1{font-size:2rem}footer{padding:2rem}
+        }
+    </style>
+</head>
+<body>
+
+<nav class="side-nav" id="sideNav">
+    <div class="logo">X</div>
+    <div class="nav-items">
+        <a href="#hero" class="nav-item active">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+            <span class="nav-label">Home</span>
+        </a>
+        <a href="#education" class="nav-item">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
+            <span class="nav-label">Education</span>
+        </a>
+        <a href="#skills" class="nav-item">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+            <span class="nav-label">Skills</span>
+        </a>
+        <a href="#projects" class="nav-item">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+            <span class="nav-label">Projects</span>
+        </a>
+        <a href="#awards" class="nav-item">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="8" r="6"/><path d="M8.21 13.89L7 23l5-3 5 3-1.21-9.12"/></svg>
+            <span class="nav-label">Awards</span>
+        </a>
+    </div>
+    <div class="side-bottom">
+        <a href="https://github.com/xxbaiy2-wq" class="nav-item" target="_blank">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+            <span class="nav-label">GitHub</span>
+        </a>
+        <a href="mailto:xiaorh0806@163.com" class="nav-item">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 01-2.06 0L2 7"/></svg>
+            <span class="nav-label">Email</span>
+        </a>
+    </div>
+</nav>
+
+<main>
+
+    <!-- HERO -->
+    <section id="hero">
+        <div class="hero-text">
+            <h1>Hi, I'm <em>Ronghui Xiao</em></h1>
+            <p class="hero-sub">M.S. Computer Technology · Northeastern University · LLM Application Developer</p>
+            <p class="hero-desc">
+                Currently pursuing my master's at Northeastern University, focused on LLM application development — RAG systems, multi-agent frameworks, and intelligent enterprise solutions.
+            </p>
+            <div class="hero-contact">
+                <span>18339211823</span>
+                <span>xiaorh0806@163.com</span>
+                <span>Shenyang, China</span>
+            </div>
+            <div class="hero-btns">
+                <a href="https://github.com/xxbaiy2-wq" class="btn btn-g" target="_blank">
+                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+                    GitHub
+                </a>
+                <a href="mailto:xiaorh0806@163.com" class="btn btn-o">Get in Touch</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- EDUCATION -->
+    <div class="section" id="education">
+        <p class="section-label">Education</p>
+        <h2 class="section-title">Education</h2>
+        <div class="divider"></div>
+
+        <div class="edu-card">
+            <div class="edu-head">
+                <h3>Northeastern University (东北大学)</h3>
+                <span class="edu-date">Sep 2025 – Jun 2028</span>
+            </div>
+            <p class="edu-school">M.S. in Computer Technology · School of Computer Science and Engineering</p>
+            <div class="edu-tags">
+                <span class="edu-tag">985</span>
+                <span class="edu-tag">211</span>
+                <span class="edu-tag">Double First-Class</span>
+            </div>
+            <p class="edu-detail"><strong>GPA:</strong> 3.68 / 4.0 (Top 4%) · First-class Scholarship</p>
+            <p class="edu-detail"><strong>Core Courses:</strong> Machine Learning, Neural Networks &amp; Deep Learning, NLP, Digital Image Processing, Data Structures</p>
+        </div>
+
+        <div class="edu-card">
+            <div class="edu-head">
+                <h3>Henan University (河南大学)</h3>
+                <span class="edu-date">Sep 2021 – Jun 2025</span>
+            </div>
+            <p class="edu-school">B.E. in Artificial Intelligence · School of Artificial Intelligence</p>
+            <div class="edu-tags">
+                <span class="edu-tag">Double First-Class</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- SKILLS -->
+    <div class="section" id="skills">
+        <p class="section-label">Skills</p>
+        <h2 class="section-title">Technical Skills</h2>
+        <div class="divider"></div>
+
+        <div class="skill-list">
+            <span class="skill-category">LLM Application Development</span>
+            <span class="skill">GPT / Claude / DeepSeek</span>
+            <span class="skill">Qwen (通义千问)</span>
+            <span class="skill">Prompt Engineering</span>
+            <span class="skill">Context Engineering</span>
+            <span class="skill">SSE Streaming</span>
+            <span class="skill">Harness Evaluation</span>
+            <span class="skill">A/B Testing</span>
+
+            <span class="skill-category">RAG &amp; Knowledge Base</span>
+            <span class="skill">RAG Pipeline</span>
+            <span class="skill">Document Chunking</span>
+            <span class="skill">Embedding</span>
+            <span class="skill">Vector Search</span>
+            <span class="skill">BM25</span>
+            <span class="skill">Hybrid Search</span>
+            <span class="skill">Rerank</span>
+            <span class="skill">GraphRAG</span>
+            <span class="skill">Knowledge Graph</span>
+            <span class="skill">ChromaDB</span>
+
+            <span class="skill-category">Agent Engineering</span>
+            <span class="skill">Multi-Agent Collaboration</span>
+            <span class="skill">Tool Calling</span>
+            <span class="skill">Task Routing</span>
+            <span class="skill">agents_as_tools</span>
+            <span class="skill">MCP Protocol</span>
+            <span class="skill">LangGraph</span>
+            <span class="skill">LangChain</span>
+            <span class="skill">OpenAI Agents SDK</span>
+
+            <span class="skill-category">Backend &amp; Engineering</span>
+            <span class="skill">Python</span>
+            <span class="skill">FastAPI</span>
+            <span class="skill">MySQL</span>
+            <span class="skill">PostgreSQL</span>
+            <span class="skill">Redis</span>
+            <span class="skill">Celery</span>
+            <span class="skill">Docker / Docker Compose</span>
+            <span class="skill">Git</span>
+            <span class="skill">RESTful APIs</span>
+
+            <span class="skill-category">Dev Tools</span>
+            <span class="skill">Cursor</span>
+            <span class="skill">Claude Code</span>
+            <span class="skill">Codex</span>
+            <span class="skill">CET-6: 531</span>
+        </div>
+    </div>
+
+    <!-- PROJECTS -->
+    <div class="section" id="projects">
+        <p class="section-label">Projects</p>
+        <h2 class="section-title">Project Experience</h2>
+        <div class="divider"></div>
+
+        <!-- Project 1 -->
+        <div class="proj">
+            <div class="proj-head">
+                <h3>MemoRilot: RAG + Multi-Agent Intelligent Study Guide<span class="proj-duration">Jan 2026 – Present</span></h3>
+            </div>
+            <div class="proj-section">
+                <p class="proj-section-title">Tech Stack</p>
+                <p class="proj-desc">Python, FastAPI, PostgreSQL, Docker, RAG, BM25, Embedding, GraphRAG, OpenAI / Ollama</p>
+            </div>
+            <div class="proj-section">
+                <p class="proj-section-title">Background</p>
+                <p class="proj-desc">Addressing knowledge stagnation in learning scenarios — lack of contextual Q&amp;A, personalized review, and AI strategy iteration. Built an intelligent study guide with a complete pipeline: Knowledge Ingestion → RAG Q&amp;A → Multi-Agent Tutoring → Intelligent Review → Automated Evaluation.</p>
+            </div>
+            <div class="proj-section">
+                <p class="proj-section-title">Key Contributions</p>
+                <div class="proj-desc">
+                    <ul>
+                        <li>Designed knowledge ingestion pipeline — deduplication, chunk segmentation, Embedding generation, vector storage, knowledge graph construction, review state initialization, and audit logging for full traceability</li>
+                        <li>Built hybrid RAG retrieval (BM25 + vector similarity) with normalized scoring, Top-K truncation, Rerank reordering, and GraphRAG/LightRAG enhancement for improved answer relevance</li>
+                        <li>Developed Planner / Tutor / ReviewCoach multi-agent collaboration with intent decomposition, contextual Q&amp;A, review suggestion generation, and graceful fallback when external RAG exceeds timeout</li>
+                        <li>Implemented adaptive review scheduling based on parameter-driven dynamic computation, returning before/after changes for explainable review strategies</li>
+                        <li>Built automated evaluation suite (60 sets, 4 dimensions × 3 difficulties) — 180 RAG evaluations: 0 failures/timeouts, 60/60 hit on topic; average response times 208ms / 208ms / 219ms (local_only / GraphRAG / LightRAG); set failure rate &lt;2%, latency +15% thresholds to reduce strategy risk</li>
+                        <li>Completed engineering hardening — PostgreSQL core modeling, async tasks, Prometheus metrics, healthz/readyz probes, debug endpoints, Docker Compose + smoke test for deployment, monitoring and troubleshooting efficiency</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="proj-tags">
+                <span class="proj-tag">Python</span>
+                <span class="proj-tag">FastAPI</span>
+                <span class="proj-tag">PostgreSQL</span>
+                <span class="proj-tag">RAG</span>
+                <span class="proj-tag">BM25</span>
+                <span class="proj-tag">GraphRAG</span>
+                <span class="proj-tag">Multi-Agent</span>
+                <span class="proj-tag">OpenAI</span>
+                <span class="proj-tag">Ollama</span>
+                <span class="proj-tag">Docker</span>
+            </div>
+        </div>
+
+        <!-- Project 2 -->
+        <div class="proj">
+            <div class="proj-head">
+                <h3>Enterprise Customer Service Hub — OpenAI Agents SDK + MCP<span class="proj-duration">Nov 2025 – Present</span></h3>
+            </div>
+            <div class="proj-section">
+                <p class="proj-section-title">Tech Stack</p>
+                <p class="proj-desc">OpenAI Agents SDK, LangChain, ChromaDB, RAG, MCP, FastAPI, Docker, SSE</p>
+            </div>
+            <div class="proj-section">
+                <p class="proj-section-title">Background</p>
+                <p class="proj-desc">Addressing scattered enterprise service portals and lack of unified knowledge output. Built an intelligent interaction hub covering HR (leave/reimbursement), campus navigation, and policy queries (social insurance/labor law) — supporting multi-task recognition, expert routing, tool invocation, and result aggregation.</p>
+            </div>
+            <div class="proj-section">
+                <p class="proj-section-title">Key Contributions</p>
+                <div class="proj-desc">
+                    <ul>
+                        <li>Designed tri-agent architecture (Intent Router, Policy Expert, Service Assistant) using OpenAI Agents SDK with agents_as_tools — sub-agents toolified while maintaining centralized control</li>
+                        <li>Built enterprise private knowledge base (employee handbook, reimbursement flows, etc.) with LangChain + ChromaDB, implementing hybrid retrieval (keyword rough → vector fine → rerank) with Prompt anti-hallucination strategies</li>
+                        <li>Encapsulated 35 tools via MCP protocol — Baidu Map (campus navigation), web search (social insurance/labor law) — supporting on-demand dynamic invocation with SSE streaming and session-based multi-turn memory</li>
+                        <li>Established evaluation pipeline: dispatch evaluation set 180 (split by category) — overall accuracy 96.11% (173/180); single-intent policy 100% (60/60), navigation 100% (40/40), reimbursement 93.33% (28/30); multi-intent combined 92.00% (23/25), multi-intent parallel 88.00% (22/25). Retrieval evaluation set 120 — combined retrieval Recall@5=99.17%, MRR=0.9729, significantly outperforming pure vector retrieval (Recall@5=98.03%, MRR=0.8592)</li>
+                        <li>Achieved continuous conversation context at 100%, single document ingestion to searchable in ~5.82s</li>
+                        <li>Completed Docker deployment with intranet penetration for external demo — forming a reusable local-dev → integration → demo deployment pipeline</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="proj-tags">
+                <span class="proj-tag">Python</span>
+                <span class="proj-tag">OpenAI Agents SDK</span>
+                <span class="proj-tag">MCP</span>
+                <span class="proj-tag">LangChain</span>
+                <span class="proj-tag">ChromaDB</span>
+                <span class="proj-tag">GraphRAG</span>
+                <span class="proj-tag">RAG</span>
+                <span class="proj-tag">FastAPI</span>
+                <span class="proj-tag">SSE</span>
+                <span class="proj-tag">Docker</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- AWARDS -->
+    <div class="section" id="awards">
+        <p class="section-label">Awards</p>
+        <h2 class="section-title">Awards &amp; Competitions</h2>
+        <div class="divider"></div>
+        <div class="edu-card">
+            <div class="award-item"><strong>LANQIAO Cup</strong> — National Excellence Award (国优)</div>
+            <div class="award-item"><strong>Mathematical Modeling</strong> — Provincial First Prize (省一等奖)</div>
+            <div class="award-item"><strong>Market Research</strong> — Provincial First Prize (省一等奖)</div>
+            <div class="award-item"><strong>Mathematics Competition</strong> — Provincial Second Prize (省二等奖)</div>
+            <div class="award-item"><strong>MCM/ICM</strong> — Honorable Mention (H奖)</div>
+        </div>
+    </div>
+
+    <!-- CONTACT -->
+    <div class="section" id="contact">
+        <p class="section-label">Contact</p>
+        <h2 class="section-title">Get in Touch</h2>
+        <div class="divider"></div>
+        <div class="contact-list">
+            <a href="https://github.com/xxbaiy2-wq" class="contact-item" target="_blank">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+                <div><span>GitHub</span><small>@xxbaiy2-wq</small></div>
+            </a>
+            <a href="mailto:xiaorh0806@163.com" class="contact-item">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 01-2.06 0L2 7"/></svg>
+                <div><span>Email</span><small>xiaorh0806@163.com</small></div>
+            </a>
+        </div>
+    </div>
+
+</main>
+
+<footer>
+    <p>&copy; 2026 Ronghui Xiao</p>
+</footer>
+
+<script>
+    const sections = document.querySelectorAll('[id]');
+    const navItems = document.querySelectorAll('.nav-item[href^="#"]');
+    const observer = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                navItems.forEach(item => {
+                    item.classList.toggle('active', item.getAttribute('href') === '#' + entry.target.id);
+                });
+            }
+        });
+    }, { rootMargin: '-30% 0px -60% 0px' });
+    sections.forEach(s => observer.observe(s));
+</script>
+</body>
+</html>
