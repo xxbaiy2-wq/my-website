@@ -15,7 +15,7 @@
             --border:#eee;--radius:10px;
         }
         html{scroll-behavior:smooth}
-        body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);line-height:1.8;font-size:15px;-webkit-font-smoothing:antialiased}
+        body{font-family:'Inter',-apple-system,'Noto Sans SC','PingFang SC',sans-serif;background:var(--bg);color:var(--text);line-height:1.8;font-size:15px;-webkit-font-smoothing:antialiased}
 
         .side-nav{position:fixed;left:0;top:0;height:100vh;background:var(--bg);border-right:1px solid var(--border);z-index:999;display:flex;flex-direction:column;padding:2rem 0;align-items:center;width:56px;overflow:hidden;transition:width .3s cubic-bezier(.4,0,.2,1)}
         .side-nav:hover{width:180px}
@@ -32,6 +32,12 @@
         .nav-label{opacity:0;transition:opacity .2s .1s}
         .side-nav:hover .nav-label{opacity:1}
         .side-bottom{margin-top:auto;display:flex;flex-direction:column;gap:2px;width:100%}
+
+        .lang-toggle{display:flex;align-items:center;gap:4px;padding:6px 18px;height:42px;cursor:pointer;user-select:none}
+        .lang-btn{font-size:12px;font-weight:600;color:var(--text3);padding:2px 8px;border-radius:4px;border:none;background:transparent;cursor:pointer;transition:all .2s;font-family:inherit}
+        .lang-btn.active{color:var(--green);background:var(--green-light)}
+        .lang-btn:hover{color:var(--green)}
+        .lang-divider{width:1px;height:16px;background:var(--border);margin:0 2px}
 
         main{margin-left:56px}
 
@@ -57,7 +63,7 @@
 
         .edu-card{padding:1.8rem 2rem;border:1px solid var(--border);border-radius:var(--radius);margin-bottom:1rem;background:#fff;transition:all .25s}
         .edu-card:hover{border-color:#d0e8df;box-shadow:0 2px 16px rgba(0,0,0,.04)}
-        .edu-head{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:.3rem}
+        .edu-head{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:.3rem;flex-wrap:wrap;gap:.3rem}
         .edu-head h3{font-size:1.05rem;font-weight:600}
         .edu-date{font-size:.8rem;color:var(--text3)}
         .edu-school{color:var(--text2);font-size:.9rem;margin-bottom:.5rem}
@@ -65,9 +71,6 @@
         .edu-tag{font-size:.7rem;font-weight:600;color:var(--green);background:var(--green-light);padding:.15rem .6rem;border-radius:999px}
         .edu-detail{color:var(--text3);font-size:.85rem}
         .edu-detail strong{color:var(--text2);font-weight:500}
-
-        .about-text{color:var(--text2);max-width:600px}
-        .about-text p{margin-bottom:1rem}
 
         .skill-list{display:flex;flex-wrap:wrap;gap:.5rem}
         .skill{padding:.45rem 1.1rem;border-radius:999px;font-size:.82rem;font-weight:500;color:var(--text2);background:var(--bg2);border:1px solid var(--border);transition:all .2s}
@@ -77,7 +80,7 @@
 
         .proj{padding:1.8rem 2rem;border:1px solid var(--border);border-radius:var(--radius);margin-bottom:1rem;transition:all .25s;background:#fff}
         .proj:hover{border-color:#d0e8df;box-shadow:0 2px 16px rgba(0,0,0,.04)}
-        .proj-head{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:.6rem}
+        .proj-head{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:.6rem;flex-wrap:wrap;gap:.3rem}
         .proj-head h3{font-size:1.05rem;font-weight:600}
         .proj-duration{font-size:.78rem;color:var(--text3);font-weight:400;margin-left:.5rem}
         .proj-section{margin-bottom:.8rem}
@@ -118,33 +121,38 @@
     <div class="nav-items">
         <a href="#hero" class="nav-item active">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
-            <span class="nav-label">Home</span>
+            <span class="nav-label" data-en="Home" data-zh="首页">Home</span>
         </a>
         <a href="#education" class="nav-item">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
-            <span class="nav-label">Education</span>
+            <span class="nav-label" data-en="Education" data-zh="教育经历">Education</span>
         </a>
         <a href="#skills" class="nav-item">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
-            <span class="nav-label">Skills</span>
+            <span class="nav-label" data-en="Skills" data-zh="技能特长">Skills</span>
         </a>
         <a href="#projects" class="nav-item">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
-            <span class="nav-label">Projects</span>
+            <span class="nav-label" data-en="Projects" data-zh="项目经历">Projects</span>
         </a>
         <a href="#awards" class="nav-item">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="8" r="6"/><path d="M8.21 13.89L7 23l5-3 5 3-1.21-9.12"/></svg>
-            <span class="nav-label">Awards</span>
+            <span class="nav-label" data-en="Awards" data-zh="荣誉奖项">Awards</span>
         </a>
     </div>
     <div class="side-bottom">
+        <div class="lang-toggle">
+            <button class="lang-btn active" data-lang="en">EN</button>
+            <span class="lang-divider"></span>
+            <button class="lang-btn" data-lang="zh">中</button>
+        </div>
         <a href="https://github.com/xxbaiy2-wq" class="nav-item" target="_blank">
             <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
             <span class="nav-label">GitHub</span>
         </a>
         <a href="mailto:xiaorh0806@163.com" class="nav-item">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 01-2.06 0L2 7"/></svg>
-            <span class="nav-label">Email</span>
+            <span class="nav-label" data-en="Email" data-zh="邮箱">Email</span>
         </a>
     </div>
 </nav>
@@ -154,145 +162,143 @@
     <!-- HERO -->
     <section id="hero">
         <div class="hero-text">
-            <h1>Hi, I'm <em>Ronghui Xiao</em></h1>
-            <p class="hero-sub">M.S. Computer Technology · Northeastern University · LLM Application Developer</p>
-            <p class="hero-desc">
-                Currently pursuing my master's at Northeastern University, focused on LLM application development — RAG systems, multi-agent frameworks, and intelligent enterprise solutions.
-            </p>
+            <h1 data-en="Hi, I'm <em>Ronghui Xiao</em>" data-zh="你好，我是<em>校荣慧</em>">Hi, I'm <em>Ronghui Xiao</em></h1>
+            <p class="hero-sub" data-en="M.S. Computer Technology · Northeastern University · LLM Application Developer" data-zh="计算机技术硕士 · 东北大学 · 大模型应用开发">M.S. Computer Technology · Northeastern University · LLM Application Developer</p>
+            <p class="hero-desc" data-en="Currently pursuing my master's at Northeastern University, focused on LLM application development — RAG systems, multi-agent frameworks, and intelligent enterprise solutions." data-zh="目前就读于东北大学硕士，专注于大模型应用开发 —— RAG系统、多智能体框架与企业级智能解决方案。">Currently pursuing my master's at Northeastern University, focused on LLM application development — RAG systems, multi-agent frameworks, and intelligent enterprise solutions.</p>
             <div class="hero-contact">
                 <span>18339211823</span>
                 <span>xiaorh0806@163.com</span>
-                <span>Shenyang, China</span>
+                <span data-en="Shenyang, China" data-zh="中国 · 沈阳">Shenyang, China</span>
             </div>
             <div class="hero-btns">
                 <a href="https://github.com/xxbaiy2-wq" class="btn btn-g" target="_blank">
                     <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
                     GitHub
                 </a>
-                <a href="mailto:xiaorh0806@163.com" class="btn btn-o">Get in Touch</a>
+                <a href="mailto:xiaorh0806@163.com" class="btn btn-o" data-en="Get in Touch" data-zh="联系我">Get in Touch</a>
             </div>
         </div>
     </section>
 
     <!-- EDUCATION -->
     <div class="section" id="education">
-        <p class="section-label">Education</p>
-        <h2 class="section-title">Education</h2>
+        <p class="section-label" data-en="Education" data-zh="教育经历">Education</p>
+        <h2 class="section-title" data-en="Education" data-zh="教育经历">Education</h2>
         <div class="divider"></div>
 
         <div class="edu-card">
             <div class="edu-head">
-                <h3>Northeastern University (东北大学)</h3>
-                <span class="edu-date">Sep 2025 – Jun 2028</span>
+                <h3 data-en="Northeastern University (东北大学)" data-zh="东北大学 (Northeastern University)">Northeastern University (东北大学)</h3>
+                <span class="edu-date" data-en="Sep 2025 – Jun 2028" data-zh="2025.09 – 2028.06">Sep 2025 – Jun 2028</span>
             </div>
-            <p class="edu-school">M.S. in Computer Technology · School of Computer Science and Engineering</p>
+            <p class="edu-school" data-en="M.S. in Computer Technology · School of Computer Science and Engineering" data-zh="计算机技术硕士 · 计算机科学与工程学院">M.S. in Computer Technology · School of Computer Science and Engineering</p>
             <div class="edu-tags">
                 <span class="edu-tag">985</span>
                 <span class="edu-tag">211</span>
-                <span class="edu-tag">Double First-Class</span>
+                <span class="edu-tag" data-en="Double First-Class" data-zh="双一流">Double First-Class</span>
             </div>
-            <p class="edu-detail"><strong>GPA:</strong> 3.68 / 4.0 (Top 4%) · First-class Scholarship</p>
-            <p class="edu-detail"><strong>Core Courses:</strong> Machine Learning, Neural Networks &amp; Deep Learning, NLP, Digital Image Processing, Data Structures</p>
+            <p class="edu-detail"><strong data-en="GPA:" data-zh="绩点：">GPA:</strong> 3.68 / 4.0 (Top 4%) · <span data-en="First-class Scholarship" data-zh="一等奖学金">First-class Scholarship</span></p>
+            <p class="edu-detail"><strong data-en="Core Courses:" data-zh="核心课程：">Core Courses:</strong> <span data-en="Machine Learning, Neural Networks &amp; Deep Learning, NLP, Digital Image Processing, Data Structures" data-zh="机器学习、神经网络与深度学习、自然语言处理、数字图像处理、数据结构">Machine Learning, Neural Networks &amp; Deep Learning, NLP, Digital Image Processing, Data Structures</span></p>
         </div>
 
         <div class="edu-card">
             <div class="edu-head">
-                <h3>Henan University (河南大学)</h3>
-                <span class="edu-date">Sep 2021 – Jun 2025</span>
+                <h3 data-en="Henan University (河南大学)" data-zh="河南大学 (Henan University)">Henan University (河南大学)</h3>
+                <span class="edu-date" data-en="Sep 2021 – Jun 2025" data-zh="2021.09 – 2025.06">Sep 2021 – Jun 2025</span>
             </div>
-            <p class="edu-school">B.E. in Artificial Intelligence · School of Artificial Intelligence</p>
+            <p class="edu-school" data-en="B.E. in Artificial Intelligence · School of Artificial Intelligence" data-zh="人工智能工学学士 · 人工智能学院">B.E. in Artificial Intelligence · School of Artificial Intelligence</p>
             <div class="edu-tags">
-                <span class="edu-tag">Double First-Class</span>
+                <span class="edu-tag" data-en="Double First-Class" data-zh="双一流">Double First-Class</span>
             </div>
         </div>
     </div>
 
     <!-- SKILLS -->
     <div class="section" id="skills">
-        <p class="section-label">Skills</p>
-        <h2 class="section-title">Technical Skills</h2>
+        <p class="section-label" data-en="Skills" data-zh="技能特长">Skills</p>
+        <h2 class="section-title" data-en="Technical Skills" data-zh="技术技能">Technical Skills</h2>
         <div class="divider"></div>
 
         <div class="skill-list">
-            <span class="skill-category">LLM Application Development</span>
+            <span class="skill-category" data-en="LLM Application Development" data-zh="大模型应用开发">LLM Application Development</span>
             <span class="skill">GPT / Claude / DeepSeek</span>
-            <span class="skill">Qwen (通义千问)</span>
-            <span class="skill">Prompt Engineering</span>
-            <span class="skill">Context Engineering</span>
-            <span class="skill">SSE Streaming</span>
-            <span class="skill">Harness Evaluation</span>
-            <span class="skill">A/B Testing</span>
+            <span class="skill" data-en="Qwen" data-zh="通义千问 (Qwen)">Qwen (通义千问)</span>
+            <span class="skill" data-en="Prompt Engineering" data-zh="提示工程">Prompt Engineering</span>
+            <span class="skill" data-en="Context Engineering" data-zh="上下文工程">Context Engineering</span>
+            <span class="skill" data-en="SSE Streaming" data-zh="SSE流式响应">SSE Streaming</span>
+            <span class="skill" data-en="Harness Evaluation" data-zh="评测套件">Harness Evaluation</span>
+            <span class="skill" data-en="A/B Testing" data-zh="A/B测试">A/B Testing</span>
 
-            <span class="skill-category">RAG &amp; Knowledge Base</span>
-            <span class="skill">RAG Pipeline</span>
-            <span class="skill">Document Chunking</span>
+            <span class="skill-category" data-en="RAG &amp; Knowledge Base" data-zh="RAG与知识库">RAG &amp; Knowledge Base</span>
+            <span class="skill" data-en="RAG Pipeline" data-zh="RAG管线">RAG Pipeline</span>
+            <span class="skill" data-en="Document Chunking" data-zh="文档分块">Document Chunking</span>
             <span class="skill">Embedding</span>
-            <span class="skill">Vector Search</span>
+            <span class="skill" data-en="Vector Search" data-zh="向量检索">Vector Search</span>
             <span class="skill">BM25</span>
-            <span class="skill">Hybrid Search</span>
-            <span class="skill">Rerank</span>
+            <span class="skill" data-en="Hybrid Search" data-zh="混合检索">Hybrid Search</span>
+            <span class="skill" data-en="Rerank" data-zh="重排序">Rerank</span>
             <span class="skill">GraphRAG</span>
-            <span class="skill">Knowledge Graph</span>
+            <span class="skill" data-en="Knowledge Graph" data-zh="知识图谱">Knowledge Graph</span>
             <span class="skill">ChromaDB</span>
 
-            <span class="skill-category">Agent Engineering</span>
-            <span class="skill">Multi-Agent Collaboration</span>
-            <span class="skill">Tool Calling</span>
-            <span class="skill">Task Routing</span>
+            <span class="skill-category" data-en="Agent Engineering" data-zh="Agent工程">Agent Engineering</span>
+            <span class="skill" data-en="Multi-Agent Collaboration" data-zh="多Agent协作">Multi-Agent Collaboration</span>
+            <span class="skill" data-en="Tool Calling" data-zh="工具调用">Tool Calling</span>
+            <span class="skill" data-en="Task Routing" data-zh="任务路由">Task Routing</span>
             <span class="skill">agents_as_tools</span>
-            <span class="skill">MCP Protocol</span>
+            <span class="skill" data-en="MCP Protocol" data-zh="MCP协议">MCP Protocol</span>
             <span class="skill">LangGraph</span>
             <span class="skill">LangChain</span>
             <span class="skill">OpenAI Agents SDK</span>
 
-            <span class="skill-category">Backend &amp; Engineering</span>
+            <span class="skill-category" data-en="Backend &amp; Engineering" data-zh="后端与工程化">Backend &amp; Engineering</span>
             <span class="skill">Python</span>
             <span class="skill">FastAPI</span>
             <span class="skill">MySQL</span>
             <span class="skill">PostgreSQL</span>
             <span class="skill">Redis</span>
             <span class="skill">Celery</span>
-            <span class="skill">Docker / Docker Compose</span>
+            <span class="skill" data-en="Docker / Docker Compose" data-zh="Docker / Docker Compose">Docker / Docker Compose</span>
             <span class="skill">Git</span>
-            <span class="skill">RESTful APIs</span>
+            <span class="skill" data-en="RESTful APIs" data-zh="RESTful API">RESTful APIs</span>
 
-            <span class="skill-category">Dev Tools</span>
+            <span class="skill-category" data-en="Dev Tools" data-zh="开发工具">Dev Tools</span>
             <span class="skill">Cursor</span>
             <span class="skill">Claude Code</span>
             <span class="skill">Codex</span>
-            <span class="skill">CET-6: 531</span>
+            <span class="skill" data-en="CET-6: 531" data-zh="英语六级: 531">CET-6: 531</span>
         </div>
     </div>
 
     <!-- PROJECTS -->
     <div class="section" id="projects">
-        <p class="section-label">Projects</p>
-        <h2 class="section-title">Project Experience</h2>
+        <p class="section-label" data-en="Projects" data-zh="项目经历">Projects</p>
+        <h2 class="section-title" data-en="Project Experience" data-zh="项目经历">Project Experience</h2>
         <div class="divider"></div>
 
         <!-- Project 1 -->
         <div class="proj">
             <div class="proj-head">
-                <h3>MemoRilot: RAG + Multi-Agent Intelligent Study Guide<span class="proj-duration">Jan 2026 – Present</span></h3>
+                <h3>MemoRilot<span class="proj-section-title" style="display:inline;margin-left:.3rem;font-weight:400;color:var(--text3)" data-en=": RAG + Multi-Agent Intelligent Study Guide" data-zh="：RAG + 多智能体智能学习助手">: RAG + Multi-Agent Intelligent Study Guide</span><span class="proj-duration" data-en="Jan 2026 – Present" data-zh="2026.01 – 至今">Jan 2026 – Present</span></h3>
             </div>
             <div class="proj-section">
-                <p class="proj-section-title">Tech Stack</p>
+                <p class="proj-section-title" data-en="Tech Stack" data-zh="技术栈">Tech Stack</p>
                 <p class="proj-desc">Python, FastAPI, PostgreSQL, Docker, RAG, BM25, Embedding, GraphRAG, OpenAI / Ollama</p>
             </div>
             <div class="proj-section">
-                <p class="proj-section-title">Background</p>
-                <p class="proj-desc">Addressing knowledge stagnation in learning scenarios — lack of contextual Q&amp;A, personalized review, and AI strategy iteration. Built an intelligent study guide with a complete pipeline: Knowledge Ingestion → RAG Q&amp;A → Multi-Agent Tutoring → Intelligent Review → Automated Evaluation.</p>
+                <p class="proj-section-title" data-en="Background" data-zh="项目背景">Background</p>
+                <p class="proj-desc" data-en="Addressing knowledge stagnation in learning scenarios — lack of contextual Q&amp;A, personalized review, and AI strategy iteration. Built an intelligent study guide with a complete pipeline: Knowledge Ingestion → RAG Q&amp;A → Multi-Agent Tutoring → Intelligent Review → Automated Evaluation." data-zh="解决学习场景中知识沉淀不足、缺乏上下文问答、个性化复习和AI策略迭代等问题。构建了完整的智能学习助手流水线：知识摄入 → RAG问答 → 多Agent辅导 → 智能复习 → 自动评测。">Addressing knowledge stagnation in learning scenarios — lack of contextual Q&amp;A, personalized review, and AI strategy iteration. Built an intelligent study guide with a complete pipeline: Knowledge Ingestion → RAG Q&amp;A → Multi-Agent Tutoring → Intelligent Review → Automated Evaluation.</p>
             </div>
             <div class="proj-section">
-                <p class="proj-section-title">Key Contributions</p>
+                <p class="proj-section-title" data-en="Key Contributions" data-zh="核心贡献">Key Contributions</p>
                 <div class="proj-desc">
                     <ul>
-                        <li>Designed knowledge ingestion pipeline — deduplication, chunk segmentation, Embedding generation, vector storage, knowledge graph construction, review state initialization, and audit logging for full traceability</li>
-                        <li>Built hybrid RAG retrieval (BM25 + vector similarity) with normalized scoring, Top-K truncation, Rerank reordering, and GraphRAG/LightRAG enhancement for improved answer relevance</li>
-                        <li>Developed Planner / Tutor / ReviewCoach multi-agent collaboration with intent decomposition, contextual Q&amp;A, review suggestion generation, and graceful fallback when external RAG exceeds timeout</li>
-                        <li>Implemented adaptive review scheduling based on parameter-driven dynamic computation, returning before/after changes for explainable review strategies</li>
-                        <li>Built automated evaluation suite (60 sets, 4 dimensions × 3 difficulties) — 180 RAG evaluations: 0 failures/timeouts, 60/60 hit on topic; average response times 208ms / 208ms / 219ms (local_only / GraphRAG / LightRAG); set failure rate &lt;2%, latency +15% thresholds to reduce strategy risk</li>
-                        <li>Completed engineering hardening — PostgreSQL core modeling, async tasks, Prometheus metrics, healthz/readyz probes, debug endpoints, Docker Compose + smoke test for deployment, monitoring and troubleshooting efficiency</li>
+                        <li data-en="Designed knowledge ingestion pipeline — deduplication, chunk segmentation, Embedding generation, vector storage, knowledge graph construction, review state initialization, and audit logging for full traceability" data-zh="设计知识摄入管线 —— 去重、分块、Embedding生成、向量存储、知识图谱构建、复习状态初始化及审计日志，实现全链路可追溯">Designed knowledge ingestion pipeline — deduplication, chunk segmentation, Embedding generation, vector storage, knowledge graph construction, review state initialization, and audit logging for full traceability</li>
+                        <li data-en="Built hybrid RAG retrieval (BM25 + vector similarity) with normalized scoring, Top-K truncation, Rerank reordering, and GraphRAG/LightRAG enhancement for improved answer relevance" data-zh="构建混合RAG检索（BM25 + 向量相似度），包含归一化评分、Top-K截断、Rerank重排序，结合GraphRAG/LightRAG多路召回，提升回答相关性">Built hybrid RAG retrieval (BM25 + vector similarity) with normalized scoring, Top-K truncation, Rerank reordering, and GraphRAG/LightRAG enhancement for improved answer relevance</li>
+                        <li data-en="Developed Planner / Tutor / ReviewCoach multi-agent collaboration with intent decomposition, contextual Q&amp;A, review suggestion generation, and graceful fallback when external RAG exceeds timeout" data-zh="开发Planner / Tutor / ReviewCoach多Agent协作，支持意图分解、上下文问答、复习建议生成，外部RAG超时时优雅降级">Developed Planner / Tutor / ReviewCoach multi-agent collaboration with intent decomposition, contextual Q&amp;A, review suggestion generation, and graceful fallback when external RAG exceeds timeout</li>
+                        <li data-en="Implemented adaptive review scheduling based on parameter-driven dynamic computation, returning before/after changes for explainable review strategies" data-zh="实现自适应复习调度，基于参数驱动的动态计算，返回前后变化以实现可解释的复习策略">Implemented adaptive review scheduling based on parameter-driven dynamic computation, returning before/after changes for explainable review strategies</li>
+                        <li data-en="Built automated evaluation suite (60 sets, 4 dimensions × 3 difficulties) — 180 RAG evaluations: 0 failures/timeouts, 60/60 hit on topic; average response times 208ms / 208ms / 219ms (local_only / GraphRAG / LightRAG); set failure rate &lt;2%, latency +15% thresholds to reduce strategy risk" data-zh="构建自动化评测套件（60组，4维度×3难度）—— 180组RAG评测：0失败/超时，60/60命中主题；平均响应208ms / 208ms / 219ms（local_only / GraphRAG / LightRAG）；设置失败率&lt;2%、延迟+15%阈值降低策略风险">Built automated evaluation suite (60 sets, 4 dimensions × 3 difficulties) — 180 RAG evaluations: 0 failures/timeouts, 60/60 hit on topic; average response times 208ms / 208ms / 219ms (local_only / GraphRAG / LightRAG); set failure rate &lt;2%, latency +15% thresholds to reduce strategy risk</li>
+                        <li data-en="Completed engineering hardening — PostgreSQL core modeling, async tasks, Prometheus metrics, healthz/readyz probes, debug endpoints, Docker Compose + smoke test for deployment, monitoring and troubleshooting efficiency" data-zh="完成工程化加固 —— PostgreSQL核心建模、异步任务、Prometheus指标、healthz/readyz探针、调试端点、Docker Compose + 冒烟测试部署，提升监控和排障效率">Completed engineering hardening — PostgreSQL core modeling, async tasks, Prometheus metrics, healthz/readyz probes, debug endpoints, Docker Compose + smoke test for deployment, monitoring and troubleshooting efficiency</li>
                     </ul>
                 </div>
             </div>
@@ -313,26 +319,27 @@
         <!-- Project 2 -->
         <div class="proj">
             <div class="proj-head">
-                <h3>Enterprise Customer Service Hub — OpenAI Agents SDK + MCP<span class="proj-duration">Nov 2025 – Present</span></h3>
+                <h3 data-en="Enterprise Customer Service Hub" data-zh="企业服务中控平台">Enterprise Customer Service Hub</h3>
+                <span class="proj-duration" data-en="Nov 2025 – Present" data-zh="2025.11 – 至今">Nov 2025 – Present</span>
             </div>
             <div class="proj-section">
-                <p class="proj-section-title">Tech Stack</p>
+                <p class="proj-section-title" data-en="Tech Stack" data-zh="技术栈">Tech Stack</p>
                 <p class="proj-desc">OpenAI Agents SDK, LangChain, ChromaDB, RAG, MCP, FastAPI, Docker, SSE</p>
             </div>
             <div class="proj-section">
-                <p class="proj-section-title">Background</p>
-                <p class="proj-desc">Addressing scattered enterprise service portals and lack of unified knowledge output. Built an intelligent interaction hub covering HR (leave/reimbursement), campus navigation, and policy queries (social insurance/labor law) — supporting multi-task recognition, expert routing, tool invocation, and result aggregation.</p>
+                <p class="proj-section-title" data-en="Background" data-zh="项目背景">Background</p>
+                <p class="proj-desc" data-en="Addressing scattered enterprise service portals and lack of unified knowledge output. Built an intelligent interaction hub covering HR (leave/reimbursement), campus navigation, and policy queries (social insurance/labor law) — supporting multi-task recognition, expert routing, tool invocation, and result aggregation." data-zh="解决企业服务入口分散、缺乏统一知识输出的问题。构建智能交互中台，涵盖HR（请假/报销）、园区导航、政策查询（社保/劳动法）—— 支持多任务识别、专家路由、工具调用和结果聚合。">Addressing scattered enterprise service portals and lack of unified knowledge output. Built an intelligent interaction hub covering HR (leave/reimbursement), campus navigation, and policy queries (social insurance/labor law) — supporting multi-task recognition, expert routing, tool invocation, and result aggregation.</p>
             </div>
             <div class="proj-section">
-                <p class="proj-section-title">Key Contributions</p>
+                <p class="proj-section-title" data-en="Key Contributions" data-zh="核心贡献">Key Contributions</p>
                 <div class="proj-desc">
                     <ul>
-                        <li>Designed tri-agent architecture (Intent Router, Policy Expert, Service Assistant) using OpenAI Agents SDK with agents_as_tools — sub-agents toolified while maintaining centralized control</li>
-                        <li>Built enterprise private knowledge base (employee handbook, reimbursement flows, etc.) with LangChain + ChromaDB, implementing hybrid retrieval (keyword rough → vector fine → rerank) with Prompt anti-hallucination strategies</li>
-                        <li>Encapsulated 35 tools via MCP protocol — Baidu Map (campus navigation), web search (social insurance/labor law) — supporting on-demand dynamic invocation with SSE streaming and session-based multi-turn memory</li>
-                        <li>Established evaluation pipeline: dispatch evaluation set 180 (split by category) — overall accuracy 96.11% (173/180); single-intent policy 100% (60/60), navigation 100% (40/40), reimbursement 93.33% (28/30); multi-intent combined 92.00% (23/25), multi-intent parallel 88.00% (22/25). Retrieval evaluation set 120 — combined retrieval Recall@5=99.17%, MRR=0.9729, significantly outperforming pure vector retrieval (Recall@5=98.03%, MRR=0.8592)</li>
-                        <li>Achieved continuous conversation context at 100%, single document ingestion to searchable in ~5.82s</li>
-                        <li>Completed Docker deployment with intranet penetration for external demo — forming a reusable local-dev → integration → demo deployment pipeline</li>
+                        <li data-en="Designed tri-agent architecture (Intent Router, Policy Expert, Service Assistant) using OpenAI Agents SDK with agents_as_tools — sub-agents toolified while maintaining centralized control" data-zh="设计三Agent架构（意图路由、政策专家、服务助手），使用OpenAI Agents SDK的agents_as_tools —— 子Agent工具化同时保持集中控制">Designed tri-agent architecture (Intent Router, Policy Expert, Service Assistant) using OpenAI Agents SDK with agents_as_tools — sub-agents toolified while maintaining centralized control</li>
+                        <li data-en="Built enterprise private knowledge base (employee handbook, reimbursement flows, etc.) with LangChain + ChromaDB, implementing hybrid retrieval (keyword rough → vector fine → rerank) with Prompt anti-hallucination strategies" data-zh="构建企业私有知识库（员工手册、报销流程等），使用LangChain + ChromaDB，实现混合检索（关键词粗筛 → 向量精筛 → 重排序），结合Prompt防幻觉策略">Built enterprise private knowledge base (employee handbook, reimbursement flows, etc.) with LangChain + ChromaDB, implementing hybrid retrieval (keyword rough → vector fine → rerank) with Prompt anti-hallucination strategies</li>
+                        <li data-en="Encapsulated 35 tools via MCP protocol — Baidu Map (campus navigation), web search (social insurance/labor law) — supporting on-demand dynamic invocation with SSE streaming and session-based multi-turn memory" data-zh="通过MCP协议封装35个工具 —— 百度地图（园区导航）、网络搜索（社保/劳动法）—— 支持按需动态调用、SSE流式响应和基于会话的多轮记忆">Encapsulated 35 tools via MCP protocol — Baidu Map (campus navigation), web search (social insurance/labor law) — supporting on-demand dynamic invocation with SSE streaming and session-based multi-turn memory</li>
+                        <li data-en="Established evaluation pipeline: dispatch evaluation set 180 (split by category) — overall accuracy 96.11% (173/180); single-intent policy 100% (60/60), navigation 100% (40/40), reimbursement 93.33% (28/30); multi-intent combined 92.00% (23/25), multi-intent parallel 88.00% (22/25). Retrieval evaluation set 120 — combined retrieval Recall@5=99.17%, MRR=0.9729, significantly outperforming pure vector retrieval (Recall@5=98.03%, MRR=0.8592)" data-zh="建立评测管线：调度评测集180（按类别划分）—— 总准确率96.11%（173/180）；单意图政策100%（60/60）、导航100%（40/40）、报销93.33%（28/30）；多意图组合92.00%（23/25）、多意图并行88.00%（22/25）。检索评测集120 —— 组合检索Recall@5=99.17%，MRR=0.9729，显著优于纯向量检索（Recall@5=98.03%，MRR=0.8592）">Established evaluation pipeline: dispatch evaluation set 180 (split by category) — overall accuracy 96.11% (173/180); single-intent policy 100% (60/60), navigation 100% (40/40), reimbursement 93.33% (28/30); multi-intent combined 92.00% (23/25), multi-intent parallel 88.00% (22/25). Retrieval evaluation set 120 — combined retrieval Recall@5=99.17%, MRR=0.9729, significantly outperforming pure vector retrieval (Recall@5=98.03%, MRR=0.8592)</li>
+                        <li data-en="Achieved continuous conversation context at 100%, single document ingestion to searchable in ~5.82s" data-zh="实现连续对话上下文保持100%，单文档摄入到可检索时间约5.82秒">Achieved continuous conversation context at 100%, single document ingestion to searchable in ~5.82s</li>
+                        <li data-en="Completed Docker deployment with intranet penetration for external demo — forming a reusable local-dev → integration → demo deployment pipeline" data-zh="完成Docker部署及内网穿透外网演示 —— 形成可复用的本地开发 → 集成 → 演示部署管线">Completed Docker deployment with intranet penetration for external demo — forming a reusable local-dev → integration → demo deployment pipeline</li>
                     </ul>
                 </div>
             </div>
@@ -353,22 +360,22 @@
 
     <!-- AWARDS -->
     <div class="section" id="awards">
-        <p class="section-label">Awards</p>
-        <h2 class="section-title">Awards &amp; Competitions</h2>
+        <p class="section-label" data-en="Awards" data-zh="荣誉奖项">Awards</p>
+        <h2 class="section-title" data-en="Awards &amp; Competitions" data-zh="荣誉奖项">Awards &amp; Competitions</h2>
         <div class="divider"></div>
         <div class="edu-card">
-            <div class="award-item"><strong>LANQIAO Cup</strong> — National Excellence Award (国优)</div>
-            <div class="award-item"><strong>Mathematical Modeling</strong> — Provincial First Prize (省一等奖)</div>
-            <div class="award-item"><strong>Market Research</strong> — Provincial First Prize (省一等奖)</div>
-            <div class="award-item"><strong>Mathematics Competition</strong> — Provincial Second Prize (省二等奖)</div>
-            <div class="award-item"><strong>MCM/ICM</strong> — Honorable Mention (H奖)</div>
+            <div class="award-item"><strong data-en="LANQIAO Cup" data-zh="蓝桥杯">LANQIAO Cup</strong> <span data-en="— National Excellence Award (国优)" data-zh="—— 全国优秀奖（国优）">— National Excellence Award (国优)</span></div>
+            <div class="award-item"><strong data-en="Mathematical Modeling" data-zh="数学建模竞赛">Mathematical Modeling</strong> <span data-en="— Provincial First Prize (省一等奖)" data-zh="—— 省级一等奖">— Provincial First Prize (省一等奖)</span></div>
+            <div class="award-item"><strong data-en="Market Research" data-zh="市场调查大赛">Market Research</strong> <span data-en="— Provincial First Prize (省一等奖)" data-zh="—— 省级一等奖">— Provincial First Prize (省一等奖)</span></div>
+            <div class="award-item"><strong data-en="Mathematics Competition" data-zh="数学竞赛">Mathematics Competition</strong> <span data-en="— Provincial Second Prize (省二等奖)" data-zh="—— 省级二等奖">— Provincial Second Prize (省二等奖)</span></div>
+            <div class="award-item"><strong data-en="MCM/ICM" data-zh="美国大学生数学建模竞赛">MCM/ICM</strong> <span data-en="— Honorable Mention (H奖)" data-zh="—— 荣誉提名奖（H奖）">— Honorable Mention (H奖)</span></div>
         </div>
     </div>
 
     <!-- CONTACT -->
     <div class="section" id="contact">
-        <p class="section-label">Contact</p>
-        <h2 class="section-title">Get in Touch</h2>
+        <p class="section-label" data-en="Contact" data-zh="联系方式">Contact</p>
+        <h2 class="section-title" data-en="Get in Touch" data-zh="联系方式">Get in Touch</h2>
         <div class="divider"></div>
         <div class="contact-list">
             <a href="https://github.com/xxbaiy2-wq" class="contact-item" target="_blank">
@@ -377,7 +384,7 @@
             </a>
             <a href="mailto:xiaorh0806@163.com" class="contact-item">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 01-2.06 0L2 7"/></svg>
-                <div><span>Email</span><small>xiaorh0806@163.com</small></div>
+                <div><span data-en="Email" data-zh="邮箱">Email</span><small>xiaorh0806@163.com</small></div>
             </a>
         </div>
     </div>
@@ -385,10 +392,39 @@
 </main>
 
 <footer>
-    <p>&copy; 2026 Ronghui Xiao</p>
+    <p>&copy; 2026 <span data-en="Ronghui Xiao" data-zh="校荣慧">Ronghui Xiao</span></p>
 </footer>
 
 <script>
+(function() {
+    // Language switching
+    const langBtns = document.querySelectorAll('.lang-btn');
+    let currentLang = localStorage.getItem('lang') || 'en';
+
+    function setLang(lang) {
+        currentLang = lang;
+        localStorage.setItem('lang', lang);
+        document.documentElement.lang = lang === 'zh' ? 'zh-CN' : 'en';
+        document.title = lang === 'zh' ? '校荣慧 - 个人主页' : 'Ronghui Xiao - Personal Site';
+
+        // Update buttons
+        langBtns.forEach(btn => {
+            btn.classList.toggle('active', btn.dataset.lang === lang);
+        });
+
+        // Update all bilingual elements
+        document.querySelectorAll('[data-en][data-zh]').forEach(el => {
+            el.innerHTML = el.getAttribute('data-' + lang);
+        });
+    }
+
+    langBtns.forEach(btn => {
+        btn.addEventListener('click', () => setLang(btn.dataset.lang));
+    });
+
+    setLang(currentLang);
+
+    // Scroll spy for nav
     const sections = document.querySelectorAll('[id]');
     const navItems = document.querySelectorAll('.nav-item[href^="#"]');
     const observer = new IntersectionObserver(entries => {
@@ -401,6 +437,7 @@
         });
     }, { rootMargin: '-30% 0px -60% 0px' });
     sections.forEach(s => observer.observe(s));
+})();
 </script>
 </body>
 </html>
