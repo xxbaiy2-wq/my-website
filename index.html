@@ -88,7 +88,8 @@
         .proj-desc{color:var(--text2);font-size:.9rem;margin-bottom:0}
         .proj-desc ul{list-style:none;margin:0;padding:0}
         .proj-desc li{padding-left:1rem;position:relative;margin-bottom:.3rem;line-height:1.7}
-        .proj-desc li::before{content:'';position:absolute;left:0;top:.65rem;width:5px;height:5px;border-radius:50%;background:var(--green-light);border:1px solid var(--green)}
+        .proj-desc ul li::before{content:'';position:absolute;left:0;top:.65rem;width:5px;height:5px;border-radius:50%;background:var(--green-light);border:1px solid var(--green)}
+        .proj-desc ol li{padding-left:.3rem}
         .proj-tags{display:flex;gap:.4rem;flex-wrap:wrap;margin-top:1rem}
         .proj-tag{font-size:.72rem;font-weight:500;color:var(--green);background:var(--green-light);padding:.2rem .7rem;border-radius:999px}
 
@@ -176,6 +177,7 @@
                     GitHub
                 </a>
                 <a href="mailto:xiaorh0806@163.com" class="btn btn-o" data-en="Get in Touch" data-zh="联系我">Get in Touch</a>
+                <a href="http://1.117.61.172/" class="btn btn-o" target="_blank" data-en="Career Radar" data-zh="职途雷达">Career Radar</a>
             </div>
         </div>
     </section>
@@ -197,8 +199,6 @@
                 <span class="edu-tag">211</span>
                 <span class="edu-tag" data-en="Double First-Class" data-zh="双一流">Double First-Class</span>
             </div>
-            <p class="edu-detail"><strong data-en="GPA:" data-zh="绩点：">GPA:</strong> 3.68 / 4.0 (Top 4%) · <span data-en="First-class Scholarship" data-zh="一等奖学金">First-class Scholarship</span></p>
-            <p class="edu-detail"><strong data-en="Core Courses:" data-zh="核心课程：">Core Courses:</strong> <span data-en="Machine Learning, Neural Networks &amp; Deep Learning, NLP, Digital Image Processing, Data Structures" data-zh="机器学习、神经网络与深度学习、自然语言处理、数字图像处理、数据结构">Machine Learning, Neural Networks &amp; Deep Learning, NLP, Digital Image Processing, Data Structures</span></p>
         </div>
 
         <div class="edu-card">
@@ -210,6 +210,8 @@
             <div class="edu-tags">
                 <span class="edu-tag" data-en="Double First-Class" data-zh="双一流">Double First-Class</span>
             </div>
+            <p class="edu-detail"><strong data-en="GPA:" data-zh="绩点：">GPA:</strong> 3.68 / 4.0 (Top 4%)</p>
+            <p class="edu-detail"><strong data-en="Core Courses:" data-zh="核心课程：">Core Courses:</strong> <span data-en="Machine Learning, Neural Networks &amp; Deep Learning, NLP, Digital Image Processing, Data Structures" data-zh="机器学习、神经网络与深度学习、自然语言处理、数字图像处理、数据结构">Machine Learning, Neural Networks &amp; Deep Learning, NLP, Digital Image Processing, Data Structures</span></p>
         </div>
     </div>
 
@@ -354,6 +356,45 @@
                 <span class="proj-tag">FastAPI</span>
                 <span class="proj-tag">SSE</span>
                 <span class="proj-tag">Docker</span>
+            </div>
+        </div>
+
+        <!-- Project 3 -->
+        <div class="proj">
+            <div class="proj-head">
+                <h3 data-en="OfferPilot — Career Radar" data-zh="OfferPilot — 职途雷达">OfferPilot — Career Radar</h3>
+            </div>
+            <div class="proj-section">
+                <p class="proj-desc" data-en="<strong>AI Job-Search Decision Agent</strong> — a full-lifecycle job-hunting assistant for students and early-career professionals. Unlike traditional resume tools or interview bots, OfferPilot is a multi-agent system with <strong>autonomous decision-making</strong> capabilities — understanding user profiles, sensing market trends, diagnosing skill gaps, and autonomously planning and executing job-search strategies." data-zh="<strong>AI求职决策智能体</strong>，面向大学生及职场新人的全链路求职辅助系统。不同于传统的简历工具或面试机器人，OfferPilot 是一个具备<strong>自主决策能力</strong>的多Agent协作系统——能够理解用户画像、感知市场行情、诊断技能差距、自主规划求职策略并执行优化。"><strong>AI Job-Search Decision Agent</strong> — a full-lifecycle job-hunting assistant for students and early-career professionals. Unlike traditional resume tools or interview bots, OfferPilot is a multi-agent system with <strong>autonomous decision-making</strong> capabilities — understanding user profiles, sensing market trends, diagnosing skill gaps, and autonomously planning and executing job-search strategies.</p>
+            </div>
+            <div class="proj-section">
+                <p class="proj-section-title" data-en="Key Features" data-zh="核心功能">Key Features</p>
+                <div class="proj-desc">
+                    <ol style="list-style:decimal;margin:0;padding-left:1.2rem">
+                        <li data-en="<strong>Smart Analysis</strong> — 5-step Pipeline (Profile → Market → Skills → Optimization → Decision), one-click job-search decision report" data-zh="<strong>智能分析</strong> — 5步Pipeline（画像→市场→技能→优化→决策），一键生成求职决策报告"><strong data-en="Smart Analysis" data-zh="智能分析">Smart Analysis</strong> <span data-en="— 5-step Pipeline (Profile → Market → Skills → Optimization → Decision), one-click job-search decision report" data-zh="— 5步Pipeline（画像→市场→技能→优化→决策），一键生成求职决策报告">— 5-step Pipeline (Profile → Market → Skills → Optimization → Decision), one-click job-search decision report</span></li>
+                        <li data-en="<strong>AI Mock Interview</strong> — text + voice dual modes, 6 interview styles, auto-generated follow-up questions based on resume" data-zh="<strong>AI模拟面试</strong> — 支持文字+语音双模式，6种面试风格，基于简历自动生成追问"><strong data-en="AI Mock Interview" data-zh="AI模拟面试">AI Mock Interview</strong> <span data-en="— text + voice dual modes, 6 interview styles, auto-generated follow-up questions based on resume" data-zh="— 支持文字+语音双模式，6种面试风格，基于简历自动生成追问">— text + voice dual modes, 6 interview styles, auto-generated follow-up questions based on resume</span></li>
+                        <li data-en="<strong>JD-Targeted Resume Optimization</strong> — paste target job description, auto-calculate match score and provide targeted revision suggestions" data-zh="<strong>JD定向简历优化</strong> — 粘贴目标岗位JD，自动计算匹配度并给出针对性修改建议"><strong data-en="JD-Targeted Resume Optimization" data-zh="JD定向简历优化">JD-Targeted Resume Optimization</strong> <span data-en="— paste target job description, auto-calculate match score and provide targeted revision suggestions" data-zh="— 粘贴目标岗位JD，自动计算匹配度并给出针对性修改建议">— paste target job description, auto-calculate match score and provide targeted revision suggestions</span></li>
+                        <li data-en="<strong>Career Radar</strong> — search 30+ real web pages via Bing, extract structured data across 7 dimensions: salary, skills, education, etc." data-zh="<strong>求职雷达</strong> — 通过Bing搜索30+真实网页，提取薪资/技能/学历等7维度结构化数据"><strong data-en="Career Radar" data-zh="求职雷达">Career Radar</strong> <span data-en="— search 30+ real web pages via Bing, extract structured data across 7 dimensions: salary, skills, education, etc." data-zh="— 通过Bing搜索30+真实网页，提取薪资/技能/学历等7维度结构化数据">— search 30+ real web pages via Bing, extract structured data across 7 dimensions: salary, skills, education, etc.</span></li>
+                        <li data-en="<strong>Resume Authenticity Audit</strong> — Truth Guard Agent auto-detects resume inflation risks and provides revision suggestions" data-zh="<strong>简历真实性审计</strong> — Truth Guard Agent 自动检测注水风险并给出修订建议"><strong data-en="Resume Authenticity Audit" data-zh="简历真实性审计">Resume Authenticity Audit</strong> <span data-en="— Truth Guard Agent auto-detects resume inflation risks and provides revision suggestions" data-zh="— Truth Guard Agent 自动检测注水风险并给出修订建议">— Truth Guard Agent auto-detects resume inflation risks and provides revision suggestions</span></li>
+                    </ol>
+                </div>
+            </div>
+            <div class="proj-section">
+                <p class="proj-section-title" data-en="Tech Architecture" data-zh="技术架构">Tech Architecture</p>
+                <p class="proj-desc" data-en="<strong>Backend:</strong> FastAPI + Python Multi-Agent (Web Search Agent, Smart Analysis Agent, Resume Agent, etc.) + LLM Integration (Mimo v2.5)<br><strong>Frontend:</strong> React SPA + Web Speech API (voice interview) + ECharts WordCloud<br><strong>Deployment:</strong> Nginx reverse proxy + RESTful API" data-zh="<strong>后端：</strong>FastAPI + Python Multi-Agent（含Web Search Agent、Smart Analysis Agent、Resume Agent等） + LLM集成（Mimo v2.5）<br><strong>前端：</strong>React SPA + Web Speech API（语音面试） + ECharts词云<br><strong>部署：</strong>Nginx反向代理 + RESTful API"><strong>Backend:</strong> FastAPI + Python Multi-Agent (Web Search Agent, Smart Analysis Agent, Resume Agent, etc.) + LLM Integration (Mimo v2.5)<br><strong>Frontend:</strong> React SPA + Web Speech API (voice interview) + ECharts WordCloud<br><strong>Deployment:</strong> Nginx reverse proxy + RESTful API</p>
+            </div>
+            <div class="proj-section">
+                <p class="proj-section-title" data-en="Highlights" data-zh="项目亮点">Highlights</p>
+                <div class="proj-desc">
+                    <ul>
+                        <li data-en="Multi-agent autonomous decision-making: LLM generates search queries → 28+ queries → 30+ pages crawled → 7-dimension data extraction → LLM report generation" data-zh="多Agent自主决策：LLM生成搜索关键词 → 28+条搜索查询 → 30+页面爬取 → 7维度数据提取 → LLM报告生成">Multi-agent autonomous decision-making: LLM generates search queries → 28+ queries → 30+ pages crawled → 7-dimension data extraction → LLM report generation</li>
+                        <li data-en="Fully async non-blocking: asyncio.to_thread() ensures SSE event stream is never blocked by LLM calls" data-zh="全异步非阻塞：asyncio.to_thread() 保证SSE事件流不被LLM调用阻塞">Fully async non-blocking: asyncio.to_thread() ensures SSE event stream is never blocked by LLM calls</li>
+                        <li data-en="LLM timeout protection: 180s SIGALRM + rule-engine fallback to ensure service availability" data-zh="LLM超时保护：180s SIGALRM + 规则引擎兜底，确保服务可用性">LLM timeout protection: 180s SIGALRM + rule-engine fallback to ensure service availability</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="proj-tags">
+                <a href="http://1.117.61.172/" class="proj-tag" target="_blank" style="text-decoration:none;cursor:pointer" data-en="Live Demo →" data-zh="在线体验 →">Live Demo →</a>
             </div>
         </div>
     </div>
