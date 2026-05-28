@@ -3,7 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ronghui Xiao - Personal Site</title>
+    <title>Ronghui Xiao | LLM Application Developer</title>
+    <meta name="description" content="Ronghui Xiao — LLM application developer focused on RAG systems, multi-agent frameworks, and AI-native enterprise solutions.">
+    <meta property="og:title" content="Ronghui Xiao | LLM Application Developer">
+    <meta property="og:description" content="RAG, Multi-Agent Systems, FastAPI, LangChain, OpenAI Agents SDK, Docker.">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="/og-image.png">
+    <meta name="twitter:card" content="summary_large_image">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -17,6 +23,7 @@
         html{scroll-behavior:smooth}
         body{font-family:'Inter',-apple-system,'Noto Sans SC','PingFang SC',sans-serif;background:var(--bg);color:var(--text);line-height:1.8;font-size:15px;-webkit-font-smoothing:antialiased}
 
+        /* Side Nav */
         .side-nav{position:fixed;left:0;top:0;height:100vh;background:var(--bg);border-right:1px solid var(--border);z-index:999;display:flex;flex-direction:column;padding:2rem 0;align-items:center;width:56px;overflow:hidden;transition:width .3s cubic-bezier(.4,0,.2,1)}
         .side-nav:hover{width:180px}
         .side-nav .logo{width:32px;height:32px;border-radius:8px;background:var(--green);color:#fff;display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:700;margin-bottom:2.5rem;flex-shrink:0;transition:margin .3s}
@@ -41,14 +48,17 @@
 
         main{margin-left:56px}
 
+        /* Hero */
         #hero{min-height:100vh;display:flex;align-items:center;padding:4rem 6rem}
-        .hero-text h1{font-size:3rem;font-weight:700;letter-spacing:-.03em;line-height:1.2;margin-bottom:.6rem}
+        .hero-text{max-width:640px}
+        .hero-greeting{font-size:1rem;color:var(--green);font-weight:500;margin-bottom:.8rem;letter-spacing:.02em}
+        .hero-text h1{font-size:3rem;font-weight:700;letter-spacing:-.03em;line-height:1.2;margin-bottom:.8rem}
         .hero-text h1 em{font-style:normal;color:var(--green)}
-        .hero-sub{font-size:1.05rem;color:var(--text3);margin-bottom:1.5rem;font-weight:400}
-        .hero-desc{max-width:500px;color:var(--text2);line-height:1.9;margin-bottom:1.8rem}
-        .hero-contact{display:flex;flex-wrap:wrap;gap:.8rem 1.5rem;margin-bottom:2.2rem;color:var(--text3);font-size:.88rem}
+        .hero-tagline{font-size:1.1rem;color:var(--text);margin-bottom:.6rem;font-weight:500;line-height:1.6}
+        .hero-desc{color:var(--text2);line-height:1.9;margin-bottom:2rem;font-size:.95rem}
+        .hero-contact{display:flex;flex-wrap:wrap;gap:.8rem 1.5rem;margin-bottom:2rem;color:var(--text3);font-size:.88rem}
         .hero-contact span{display:inline-flex;align-items:center;gap:.35rem}
-        .hero-btns{display:flex;gap:.8rem}
+        .hero-btns{display:flex;gap:.8rem;flex-wrap:wrap}
         .btn{display:inline-flex;align-items:center;gap:.5rem;padding:.65rem 1.6rem;border-radius:8px;font-size:.88rem;font-weight:500;text-decoration:none;transition:all .2s;font-family:inherit;border:none;cursor:pointer}
         .btn-g{background:var(--green);color:#fff}
         .btn-g:hover{background:var(--green-hover);transform:translateY(-1px)}
@@ -56,11 +66,13 @@
         .btn-o:hover{border-color:var(--green);color:var(--green)}
         .btn svg{width:16px;height:16px}
 
+        /* Sections */
         .section{padding:5rem 6rem;max-width:900px}
         .section-label{font-size:.7rem;font-weight:600;letter-spacing:.15em;text-transform:uppercase;color:var(--green);margin-bottom:.6rem}
         .section-title{font-size:1.6rem;font-weight:700;margin-bottom:2rem;letter-spacing:-.02em}
         .divider{width:40px;height:2px;background:var(--green);margin-bottom:2rem;border-radius:1px}
 
+        /* Education */
         .edu-card{padding:1.8rem 2rem;border:1px solid var(--border);border-radius:var(--radius);margin-bottom:1rem;background:#fff;transition:all .25s}
         .edu-card:hover{border-color:#d0e8df;box-shadow:0 2px 16px rgba(0,0,0,.04)}
         .edu-head{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:.3rem;flex-wrap:wrap;gap:.3rem}
@@ -72,35 +84,48 @@
         .edu-detail{color:var(--text3);font-size:.85rem}
         .edu-detail strong{color:var(--text2);font-weight:500}
 
-        .skill-list{display:flex;flex-wrap:wrap;gap:.5rem}
-        .skill{padding:.45rem 1.1rem;border-radius:999px;font-size:.82rem;font-weight:500;color:var(--text2);background:var(--bg2);border:1px solid var(--border);transition:all .2s}
-        .skill:hover{background:var(--green);color:#fff;border-color:var(--green)}
-        .skill-category{font-size:.72rem;font-weight:600;color:var(--green);letter-spacing:.1em;text-transform:uppercase;margin:1.2rem 0 .6rem;display:block;width:100%;flex-basis:100%}
-        .skill-category:first-child{margin-top:0}
+        /* Skills — Card Layout */
+        .skill-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:1rem}
+        .skill-card{padding:1.5rem 1.8rem;border:1px solid var(--border);border-radius:var(--radius);background:#fff;transition:all .25s}
+        .skill-card:hover{border-color:#d0e8df;box-shadow:0 2px 16px rgba(0,0,0,.04)}
+        .skill-card-title{font-size:.72rem;font-weight:600;color:var(--green);letter-spacing:.08em;text-transform:uppercase;margin-bottom:.8rem;display:flex;align-items:center;gap:.5rem}
+        .skill-card-title svg{width:16px;height:16px;flex-shrink:0}
+        .skill-tags{display:flex;flex-wrap:wrap;gap:.4rem}
+        .skill-tag{padding:.35rem .85rem;border-radius:999px;font-size:.78rem;font-weight:500;color:var(--text2);background:var(--bg2);border:1px solid var(--border);transition:all .2s}
+        .skill-tag:hover{background:var(--green);color:#fff;border-color:var(--green)}
 
-        .proj{padding:1.8rem 2rem;border:1px solid var(--border);border-radius:var(--radius);margin-bottom:1rem;transition:all .25s;background:#fff}
+        /* Projects — Card with sections */
+        .proj{padding:2rem 2.2rem;border:1px solid var(--border);border-radius:var(--radius);margin-bottom:1.2rem;transition:all .25s;background:#fff}
         .proj:hover{border-color:#d0e8df;box-shadow:0 2px 16px rgba(0,0,0,.04)}
-        .proj-head{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:.6rem;flex-wrap:wrap;gap:.3rem}
-        .proj-head h3{font-size:1.05rem;font-weight:600}
-        .proj-duration{font-size:.78rem;color:var(--text3);font-weight:400;margin-left:.5rem}
-        .proj-section{margin-bottom:.8rem}
-        .proj-section-title{font-size:.82rem;font-weight:600;color:var(--text);margin-bottom:.4rem}
-        .proj-desc{color:var(--text2);font-size:.9rem;margin-bottom:0}
-        .proj-desc ul{list-style:none;margin:0;padding:0}
-        .proj-desc li{padding-left:1rem;position:relative;margin-bottom:.3rem;line-height:1.7}
-        .proj-desc ul li::before{content:'';position:absolute;left:0;top:.65rem;width:5px;height:5px;border-radius:50%;background:var(--green-light);border:1px solid var(--green)}
-        .proj-desc ol li{padding-left:.3rem}
-        .proj-tags{display:flex;gap:.4rem;flex-wrap:wrap;margin-top:1rem}
-        .proj-tag{font-size:.72rem;font-weight:500;color:var(--green);background:var(--green-light);padding:.2rem .7rem;border-radius:999px}
+        .proj-head{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:.5rem;flex-wrap:wrap;gap:.3rem}
+        .proj-head h3{font-size:1.1rem;font-weight:700}
+        .proj-subtitle{color:var(--text2);font-size:.88rem;margin-bottom:1rem;line-height:1.7}
+        .proj-block{margin-bottom:1rem}
+        .proj-block-title{font-size:.75rem;font-weight:600;color:var(--green);letter-spacing:.06em;text-transform:uppercase;margin-bottom:.4rem;display:flex;align-items:center;gap:.4rem}
+        .proj-block p,.proj-block li{color:var(--text2);font-size:.88rem;line-height:1.7}
+        .proj-block ul{list-style:none;margin:0;padding:0}
+        .proj-block li{padding-left:1rem;position:relative;margin-bottom:.25rem}
+        .proj-block li::before{content:'';position:absolute;left:0;top:.65rem;width:5px;height:5px;border-radius:50%;background:var(--green-light);border:1px solid var(--green)}
+        .proj-metrics{display:flex;flex-wrap:wrap;gap:.5rem;margin:.6rem 0}
+        .proj-metric{padding:.3rem .8rem;border-radius:6px;font-size:.78rem;font-weight:600;background:var(--green-light);color:var(--green)}
+        .proj-tech{display:flex;flex-wrap:wrap;gap:.4rem;margin-top:.6rem}
+        .proj-tech span{font-size:.72rem;font-weight:500;color:var(--text3);background:var(--bg2);padding:.2rem .6rem;border-radius:4px;border:1px solid var(--border)}
+        .proj-links{display:flex;gap:.6rem;margin-top:1rem}
+        .proj-link{display:inline-flex;align-items:center;gap:.3rem;font-size:.8rem;font-weight:500;color:var(--green);text-decoration:none;padding:.35rem .9rem;border:1px solid var(--green);border-radius:6px;transition:all .2s}
+        .proj-link:hover{background:var(--green);color:#fff}
 
-        .award-item{padding:.6rem 0;border-bottom:1px solid var(--border);font-size:.9rem;color:var(--text2)}
+        /* Awards */
+        .award-item{padding:.7rem 0;border-bottom:1px solid var(--border);font-size:.9rem;color:var(--text2);display:flex;justify-content:space-between;align-items:baseline;flex-wrap:wrap;gap:.2rem}
         .award-item:last-child{border-bottom:none}
         .award-item strong{color:var(--text);font-weight:600}
+        .award-item .award-detail{font-size:.8rem;color:var(--text3);text-align:right}
+        .award-summary{color:var(--text2);font-size:.9rem;margin-bottom:1.5rem;font-style:italic}
 
+        /* Contact */
         .contact-list{display:flex;gap:1rem;flex-wrap:wrap}
-        .contact-item{display:flex;align-items:center;gap:.8rem;padding:1rem 1.6rem;border:1px solid var(--border);border-radius:var(--radius);text-decoration:none;color:var(--text);transition:all .25s;min-width:180px}
-        .contact-item:hover{border-color:#d0e8df;box-shadow:0 2px 16px rgba(0,0,0,.04)}
-        .contact-item svg{width:20px;height:20px;color:var(--green);flex-shrink:0}
+        .contact-item{display:flex;align-items:center;gap:.8rem;padding:1.2rem 1.8rem;border:1px solid var(--border);border-radius:var(--radius);text-decoration:none;color:var(--text);transition:all .25s;min-width:200px}
+        .contact-item:hover{border-color:#d0e8df;box-shadow:0 2px 16px rgba(0,0,0,.04);transform:translateY(-2px)}
+        .contact-item svg{width:22px;height:22px;color:var(--green);flex-shrink:0}
         .contact-item span{font-size:.88rem;font-weight:500}
         .contact-item small{display:block;font-size:.75rem;color:var(--text3);font-weight:400}
 
@@ -112,6 +137,7 @@
             main{margin-left:50px}footer{margin-left:50px}
             #hero{padding:3rem 2rem}.section{padding:3.5rem 2rem}
             .hero-text h1{font-size:2rem}footer{padding:2rem}
+            .skill-grid{grid-template-columns:1fr}
         }
     </style>
 </head>
@@ -163,21 +189,18 @@
     <!-- HERO -->
     <section id="hero">
         <div class="hero-text">
-            <h1 data-en="Hi, I'm <em>Ronghui Xiao</em>" data-zh="你好，我是<em>校荣慧</em>">Hi, I'm <em>Ronghui Xiao</em></h1>
-            <p class="hero-sub" data-en="M.S. Computer Technology · Northeastern University · LLM Application Developer" data-zh="计算机技术硕士 · 东北大学 · 大模型应用开发">M.S. Computer Technology · Northeastern University · LLM Application Developer</p>
-            <p class="hero-desc" data-en="Currently pursuing my master's at Northeastern University, focused on LLM application development — RAG systems, multi-agent frameworks, and intelligent enterprise solutions." data-zh="目前就读于东北大学硕士，专注于大模型应用开发 —— RAG系统、多智能体框架与企业级智能解决方案。">Currently pursuing my master's at Northeastern University, focused on LLM application development — RAG systems, multi-agent frameworks, and intelligent enterprise solutions.</p>
+            <p class="hero-greeting" data-en="Hi there, I'm" data-zh="你好，我是">Hi there, I'm</p>
+            <h1><em data-en="Ronghui Xiao" data-zh="校荣慧">Ronghui Xiao</em></h1>
+            <p class="hero-tagline" data-en="LLM Application Developer focused on RAG, Multi-Agent Systems, and AI-native enterprise applications." data-zh="大模型应用开发者，专注 RAG、多智能体系统与 AI 原生企业应用。">LLM Application Developer focused on RAG, Multi-Agent Systems, and AI-native enterprise applications.</p>
+            <p class="hero-desc" data-en="I build production-ready AI systems with FastAPI, LangChain, OpenAI Agents SDK, PostgreSQL, and Docker — delivering intelligent solutions from prototype to deployment." data-zh="使用 FastAPI、LangChain、OpenAI Agents SDK、PostgreSQL 和 Docker 构建可落地的 AI 系统，从原型到部署全链路交付。">I build production-ready AI systems with FastAPI, LangChain, OpenAI Agents SDK, PostgreSQL, and Docker — delivering intelligent solutions from prototype to deployment.</p>
             <div class="hero-contact">
-                <span>18339211823</span>
                 <span>xiaorh0806@163.com</span>
                 <span data-en="Shenyang, China" data-zh="中国 · 沈阳">Shenyang, China</span>
             </div>
             <div class="hero-btns">
-                <a href="https://github.com/xxbaiy2-wq" class="btn btn-g" target="_blank">
-                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
-                    GitHub
-                </a>
-                <a href="mailto:xiaorh0806@163.com" class="btn btn-o" data-en="Get in Touch" data-zh="联系我">Get in Touch</a>
-                <a href="http://1.117.61.172/" class="btn btn-o" target="_blank" data-en="Career Radar" data-zh="职途雷达">Career Radar</a>
+                <a href="#projects" class="btn btn-g" data-en="View Projects" data-zh="查看项目">View Projects</a>
+                <a href="Ronghui_Xiao_Resume.pdf" class="btn btn-o" target="_blank" data-en="Download Resume" data-zh="下载简历">Download Resume</a>
+                <a href="mailto:xiaorh0806@163.com" class="btn btn-o" data-en="Contact Me" data-zh="联系我">Contact Me</a>
             </div>
         </div>
     </section>
@@ -215,186 +238,210 @@
         </div>
     </div>
 
-    <!-- SKILLS -->
+    <!-- SKILLS — Card Grid -->
     <div class="section" id="skills">
         <p class="section-label" data-en="Skills" data-zh="技能特长">Skills</p>
         <h2 class="section-title" data-en="Technical Skills" data-zh="技术技能">Technical Skills</h2>
         <div class="divider"></div>
 
-        <div class="skill-list">
-            <span class="skill-category" data-en="LLM Application Development" data-zh="大模型应用开发">LLM Application Development</span>
-            <span class="skill">GPT / Claude / DeepSeek</span>
-            <span class="skill" data-en="Qwen" data-zh="通义千问 (Qwen)">Qwen (通义千问)</span>
-            <span class="skill" data-en="Prompt Engineering" data-zh="提示工程">Prompt Engineering</span>
-            <span class="skill" data-en="Context Engineering" data-zh="上下文工程">Context Engineering</span>
-            <span class="skill" data-en="SSE Streaming" data-zh="SSE流式响应">SSE Streaming</span>
-            <span class="skill" data-en="Harness Evaluation" data-zh="评测套件">Harness Evaluation</span>
-            <span class="skill" data-en="A/B Testing" data-zh="A/B测试">A/B Testing</span>
+        <div class="skill-grid">
+            <div class="skill-card">
+                <div class="skill-card-title">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M12 2a4 4 0 014 4c0 1.95-1.4 3.58-3.25 3.93V11h3.25a4 4 0 013.97 4.5 3 3 0 01-.17.64L19 20h-3l-1.5-3H9.5L8 20H5l1.95-2.93a3 3 0 01-.17-.64A4 4 0 0110.75 11H14V9.93A4.01 4.01 0 0112 2z"/></svg>
+                    <span data-en="LLM Application Development" data-zh="大模型应用开发">LLM Application Development</span>
+                </div>
+                <div class="skill-tags">
+                    <span class="skill-tag">GPT / Claude / DeepSeek</span>
+                    <span class="skill-tag">Qwen</span>
+                    <span class="skill-tag" data-en="Prompt Engineering" data-zh="提示工程">Prompt Engineering</span>
+                    <span class="skill-tag" data-en="Context Engineering" data-zh="上下文工程">Context Engineering</span>
+                    <span class="skill-tag" data-en="Tool Calling" data-zh="工具调用">Tool Calling</span>
+                    <span class="skill-tag">A/B Testing</span>
+                    <span class="skill-tag" data-en="SSE Streaming" data-zh="SSE流式响应">SSE Streaming</span>
+                </div>
+            </div>
 
-            <span class="skill-category" data-en="RAG &amp; Knowledge Base" data-zh="RAG与知识库">RAG &amp; Knowledge Base</span>
-            <span class="skill" data-en="RAG Pipeline" data-zh="RAG管线">RAG Pipeline</span>
-            <span class="skill" data-en="Document Chunking" data-zh="文档分块">Document Chunking</span>
-            <span class="skill">Embedding</span>
-            <span class="skill" data-en="Vector Search" data-zh="向量检索">Vector Search</span>
-            <span class="skill">BM25</span>
-            <span class="skill" data-en="Hybrid Search" data-zh="混合检索">Hybrid Search</span>
-            <span class="skill" data-en="Rerank" data-zh="重排序">Rerank</span>
-            <span class="skill">GraphRAG</span>
-            <span class="skill" data-en="Knowledge Graph" data-zh="知识图谱">Knowledge Graph</span>
-            <span class="skill">ChromaDB</span>
+            <div class="skill-card">
+                <div class="skill-card-title">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+                    <span data-en="RAG &amp; Knowledge Base" data-zh="RAG与知识库">RAG &amp; Knowledge Base</span>
+                </div>
+                <div class="skill-tags">
+                    <span class="skill-tag" data-en="RAG Pipeline" data-zh="RAG管线">RAG Pipeline</span>
+                    <span class="skill-tag" data-en="Document Chunking" data-zh="文档分块">Document Chunking</span>
+                    <span class="skill-tag">Embedding</span>
+                    <span class="skill-tag" data-en="Vector Search" data-zh="向量检索">Vector Search</span>
+                    <span class="skill-tag">BM25</span>
+                    <span class="skill-tag" data-en="Hybrid Search" data-zh="混合检索">Hybrid Search</span>
+                    <span class="skill-tag" data-en="Rerank" data-zh="重排序">Rerank</span>
+                    <span class="skill-tag">GraphRAG</span>
+                    <span class="skill-tag" data-en="Knowledge Graph" data-zh="知识图谱">Knowledge Graph</span>
+                    <span class="skill-tag">ChromaDB</span>
+                </div>
+            </div>
 
-            <span class="skill-category" data-en="Agent Engineering" data-zh="Agent工程">Agent Engineering</span>
-            <span class="skill" data-en="Multi-Agent Collaboration" data-zh="多Agent协作">Multi-Agent Collaboration</span>
-            <span class="skill" data-en="Tool Calling" data-zh="工具调用">Tool Calling</span>
-            <span class="skill" data-en="Task Routing" data-zh="任务路由">Task Routing</span>
-            <span class="skill">agents_as_tools</span>
-            <span class="skill" data-en="MCP Protocol" data-zh="MCP协议">MCP Protocol</span>
-            <span class="skill">LangGraph</span>
-            <span class="skill">LangChain</span>
-            <span class="skill">OpenAI Agents SDK</span>
+            <div class="skill-card">
+                <div class="skill-card-title">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 01-2.83 2.83l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 01-4 0v-.09A1.65 1.65 0 009 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 01-2.83-2.83l.06-.06A1.65 1.65 0 004.68 15a1.65 1.65 0 00-1.51-1H3a2 2 0 010-4h.09A1.65 1.65 0 004.6 9a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 012.83-2.83l.06.06A1.65 1.65 0 009 4.68a1.65 1.65 0 001-1.51V3a2 2 0 014 0v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 012.83 2.83l-.06.06A1.65 1.65 0 0019.4 9a1.65 1.65 0 001.51 1H21a2 2 0 010 4h-.09a1.65 1.65 0 00-1.51 1z"/></svg>
+                    <span data-en="Agent Engineering" data-zh="Agent工程">Agent Engineering</span>
+                </div>
+                <div class="skill-tags">
+                    <span class="skill-tag" data-en="Multi-Agent Collaboration" data-zh="多Agent协作">Multi-Agent Collaboration</span>
+                    <span class="skill-tag" data-en="Task Routing" data-zh="任务路由">Task Routing</span>
+                    <span class="skill-tag">agents_as_tools</span>
+                    <span class="skill-tag" data-en="MCP Protocol" data-zh="MCP协议">MCP Protocol</span>
+                    <span class="skill-tag">LangGraph</span>
+                    <span class="skill-tag">LangChain</span>
+                    <span class="skill-tag">OpenAI Agents SDK</span>
+                </div>
+            </div>
 
-            <span class="skill-category" data-en="Backend &amp; Engineering" data-zh="后端与工程化">Backend &amp; Engineering</span>
-            <span class="skill">Python</span>
-            <span class="skill">FastAPI</span>
-            <span class="skill">MySQL</span>
-            <span class="skill">PostgreSQL</span>
-            <span class="skill">Redis</span>
-            <span class="skill">Celery</span>
-            <span class="skill" data-en="Docker / Docker Compose" data-zh="Docker / Docker Compose">Docker / Docker Compose</span>
-            <span class="skill">Git</span>
-            <span class="skill" data-en="RESTful APIs" data-zh="RESTful API">RESTful APIs</span>
-
-            <span class="skill-category" data-en="Dev Tools" data-zh="开发工具">Dev Tools</span>
-            <span class="skill">Cursor</span>
-            <span class="skill">Claude Code</span>
-            <span class="skill">Codex</span>
-            <span class="skill" data-en="CET-6: 531" data-zh="英语六级: 531">CET-6: 531</span>
+            <div class="skill-card">
+                <div class="skill-card-title">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+                    <span data-en="Backend &amp; Engineering" data-zh="后端与工程化">Backend &amp; Engineering</span>
+                </div>
+                <div class="skill-tags">
+                    <span class="skill-tag">Python</span>
+                    <span class="skill-tag">FastAPI</span>
+                    <span class="skill-tag">MySQL</span>
+                    <span class="skill-tag">PostgreSQL</span>
+                    <span class="skill-tag">Redis</span>
+                    <span class="skill-tag">Celery</span>
+                    <span class="skill-tag">Docker / Docker Compose</span>
+                    <span class="skill-tag">Git</span>
+                    <span class="skill-tag">RESTful APIs</span>
+                    <span class="skill-tag" data-en="CET-6: 531" data-zh="英语六级: 531">CET-6: 531</span>
+                </div>
+            </div>
         </div>
     </div>
 
-    <!-- PROJECTS -->
+    <!-- PROJECTS — Card-based -->
     <div class="section" id="projects">
         <p class="section-label" data-en="Projects" data-zh="项目经历">Projects</p>
         <h2 class="section-title" data-en="Project Experience" data-zh="项目经历">Project Experience</h2>
         <div class="divider"></div>
 
-        <!-- Project 1 -->
+        <!-- Project 1: MemoRilot -->
         <div class="proj">
             <div class="proj-head">
-                <h3>MemoRilot<span class="proj-section-title" style="display:inline;margin-left:.3rem;font-weight:400;color:var(--text3)" data-en=": RAG + Multi-Agent Intelligent Study Guide" data-zh="：RAG + 多智能体智能学习助手">: RAG + Multi-Agent Intelligent Study Guide</span><span class="proj-duration" data-en="Jan 2026 – Present" data-zh="2026.01 – 至今">Jan 2026 – Present</span></h3>
+                <h3>MemoRilot</h3>
+                <span class="edu-date" data-en="Jan 2026 – Present" data-zh="2026.01 – 至今">Jan 2026 – Present</span>
             </div>
-            <div class="proj-section">
-                <p class="proj-section-title" data-en="Tech Stack" data-zh="技术栈">Tech Stack</p>
-                <p class="proj-desc">Python, FastAPI, PostgreSQL, Docker, RAG, BM25, Embedding, GraphRAG, OpenAI / Ollama</p>
+            <p class="proj-subtitle" data-en="RAG + Multi-Agent intelligent study guide — a production-style AI learning assistant with hybrid retrieval, multi-agent tutoring, adaptive review, and automated evaluation." data-zh="RAG + 多智能体智能学习助手 —— 具备混合检索、多Agent辅导、自适应复习和自动评测的生产级AI学习系统。">RAG + Multi-Agent intelligent study guide — a production-style AI learning assistant with hybrid retrieval, multi-agent tutoring, adaptive review, and automated evaluation.</p>
+
+            <div class="proj-block">
+                <div class="proj-block-title" data-en="Problem" data-zh="问题">Problem</div>
+                <p data-en="Knowledge stagnation in learning scenarios — lack of contextual Q&amp;A, personalized review scheduling, and AI strategy iteration." data-zh="学习场景中知识沉淀不足、缺乏上下文问答、个性化复习调度和AI策略迭代。">Knowledge stagnation in learning scenarios — lack of contextual Q&amp;A, personalized review scheduling, and AI strategy iteration.</p>
             </div>
-            <div class="proj-section">
-                <p class="proj-section-title" data-en="Background" data-zh="项目背景">Background</p>
-                <p class="proj-desc" data-en="Addressing knowledge stagnation in learning scenarios — lack of contextual Q&amp;A, personalized review, and AI strategy iteration. Built an intelligent study guide with a complete pipeline: Knowledge Ingestion → RAG Q&amp;A → Multi-Agent Tutoring → Intelligent Review → Automated Evaluation." data-zh="解决学习场景中知识沉淀不足、缺乏上下文问答、个性化复习和AI策略迭代等问题。构建了完整的智能学习助手流水线：知识摄入 → RAG问答 → 多Agent辅导 → 智能复习 → 自动评测。">Addressing knowledge stagnation in learning scenarios — lack of contextual Q&amp;A, personalized review, and AI strategy iteration. Built an intelligent study guide with a complete pipeline: Knowledge Ingestion → RAG Q&amp;A → Multi-Agent Tutoring → Intelligent Review → Automated Evaluation.</p>
+
+            <div class="proj-block">
+                <div class="proj-block-title" data-en="My Contribution" data-zh="核心贡献">My Contribution</div>
+                <ul>
+                    <li data-en="Designed knowledge ingestion pipeline — dedup, chunking, Embedding, vector storage, knowledge graph, review state, audit logging" data-zh="设计知识摄入管线 —— 去重、分块、Embedding、向量存储、知识图谱、复习状态、审计日志">Designed knowledge ingestion pipeline — dedup, chunking, Embedding, vector storage, knowledge graph, review state, audit logging</li>
+                    <li data-en="Built hybrid RAG retrieval (BM25 + vector) with normalized scoring, Top-K, Rerank, and GraphRAG/LightRAG enhancement" data-zh="构建混合RAG检索（BM25 + 向量），含归一化评分、Top-K、Rerank，结合GraphRAG/LightRAG多路召回">Built hybrid RAG retrieval (BM25 + vector) with normalized scoring, Top-K, Rerank, and GraphRAG/LightRAG enhancement</li>
+                    <li data-en="Developed Planner / Tutor / ReviewCoach multi-agent collaboration with intent decomposition and graceful fallback" data-zh="开发Planner / Tutor / ReviewCoach多Agent协作，支持意图分解和优雅降级">Developed Planner / Tutor / ReviewCoach multi-agent collaboration with intent decomposition and graceful fallback</li>
+                    <li data-en="Implemented adaptive review scheduling with parameter-driven dynamic computation for explainable strategies" data-zh="实现自适应复习调度，参数驱动的动态计算，可解释复习策略">Implemented adaptive review scheduling with parameter-driven dynamic computation for explainable strategies</li>
+                    <li data-en="Completed engineering hardening — PostgreSQL modeling, Prometheus metrics, healthz/readyz probes, Docker Compose + smoke test" data-zh="工程化加固 —— PostgreSQL建模、Prometheus指标、healthz/readyz探针、Docker Compose冒烟测试">Completed engineering hardening — PostgreSQL modeling, Prometheus metrics, healthz/readyz probes, Docker Compose + smoke test</li>
+                </ul>
             </div>
-            <div class="proj-section">
-                <p class="proj-section-title" data-en="Key Contributions" data-zh="核心贡献">Key Contributions</p>
-                <div class="proj-desc">
-                    <ul>
-                        <li data-en="Designed knowledge ingestion pipeline — deduplication, chunk segmentation, Embedding generation, vector storage, knowledge graph construction, review state initialization, and audit logging for full traceability" data-zh="设计知识摄入管线 —— 去重、分块、Embedding生成、向量存储、知识图谱构建、复习状态初始化及审计日志，实现全链路可追溯">Designed knowledge ingestion pipeline — deduplication, chunk segmentation, Embedding generation, vector storage, knowledge graph construction, review state initialization, and audit logging for full traceability</li>
-                        <li data-en="Built hybrid RAG retrieval (BM25 + vector similarity) with normalized scoring, Top-K truncation, Rerank reordering, and GraphRAG/LightRAG enhancement for improved answer relevance" data-zh="构建混合RAG检索（BM25 + 向量相似度），包含归一化评分、Top-K截断、Rerank重排序，结合GraphRAG/LightRAG多路召回，提升回答相关性">Built hybrid RAG retrieval (BM25 + vector similarity) with normalized scoring, Top-K truncation, Rerank reordering, and GraphRAG/LightRAG enhancement for improved answer relevance</li>
-                        <li data-en="Developed Planner / Tutor / ReviewCoach multi-agent collaboration with intent decomposition, contextual Q&amp;A, review suggestion generation, and graceful fallback when external RAG exceeds timeout" data-zh="开发Planner / Tutor / ReviewCoach多Agent协作，支持意图分解、上下文问答、复习建议生成，外部RAG超时时优雅降级">Developed Planner / Tutor / ReviewCoach multi-agent collaboration with intent decomposition, contextual Q&amp;A, review suggestion generation, and graceful fallback when external RAG exceeds timeout</li>
-                        <li data-en="Implemented adaptive review scheduling based on parameter-driven dynamic computation, returning before/after changes for explainable review strategies" data-zh="实现自适应复习调度，基于参数驱动的动态计算，返回前后变化以实现可解释的复习策略">Implemented adaptive review scheduling based on parameter-driven dynamic computation, returning before/after changes for explainable review strategies</li>
-                        <li data-en="Built automated evaluation suite (60 sets, 4 dimensions × 3 difficulties) — 180 RAG evaluations: 0 failures/timeouts, 60/60 hit on topic; average response times 208ms / 208ms / 219ms (local_only / GraphRAG / LightRAG); set failure rate &lt;2%, latency +15% thresholds to reduce strategy risk" data-zh="构建自动化评测套件（60组，4维度×3难度）—— 180组RAG评测：0失败/超时，60/60命中主题；平均响应208ms / 208ms / 219ms（local_only / GraphRAG / LightRAG）；设置失败率&lt;2%、延迟+15%阈值降低策略风险">Built automated evaluation suite (60 sets, 4 dimensions × 3 difficulties) — 180 RAG evaluations: 0 failures/timeouts, 60/60 hit on topic; average response times 208ms / 208ms / 219ms (local_only / GraphRAG / LightRAG); set failure rate &lt;2%, latency +15% thresholds to reduce strategy risk</li>
-                        <li data-en="Completed engineering hardening — PostgreSQL core modeling, async tasks, Prometheus metrics, healthz/readyz probes, debug endpoints, Docker Compose + smoke test for deployment, monitoring and troubleshooting efficiency" data-zh="完成工程化加固 —— PostgreSQL核心建模、异步任务、Prometheus指标、healthz/readyz探针、调试端点、Docker Compose + 冒烟测试部署，提升监控和排障效率">Completed engineering hardening — PostgreSQL core modeling, async tasks, Prometheus metrics, healthz/readyz probes, debug endpoints, Docker Compose + smoke test for deployment, monitoring and troubleshooting efficiency</li>
-                    </ul>
+
+            <div class="proj-block">
+                <div class="proj-block-title" data-en="Impact &amp; Metrics" data-zh="效果与指标">Impact &amp; Metrics</div>
+                <div class="proj-metrics">
+                    <span class="proj-metric" data-en="180 RAG Evaluations" data-zh="180组RAG评测">180 RAG Evaluations</span>
+                    <span class="proj-metric">0 Failures / Timeouts</span>
+                    <span class="proj-metric" data-en="60/60 Topic Hit" data-zh="60/60命中主题">60/60 Topic Hit</span>
+                    <span class="proj-metric" data-en="Avg 208ms Response" data-zh="平均208ms响应">Avg 208ms Response</span>
+                    <span class="proj-metric">&lt;2% Failure Rate</span>
                 </div>
             </div>
-            <div class="proj-tags">
-                <span class="proj-tag">Python</span>
-                <span class="proj-tag">FastAPI</span>
-                <span class="proj-tag">PostgreSQL</span>
-                <span class="proj-tag">RAG</span>
-                <span class="proj-tag">BM25</span>
-                <span class="proj-tag">GraphRAG</span>
-                <span class="proj-tag">Multi-Agent</span>
-                <span class="proj-tag">OpenAI</span>
-                <span class="proj-tag">Ollama</span>
-                <span class="proj-tag">Docker</span>
+
+            <div class="proj-tech">
+                <span>Python</span><span>FastAPI</span><span>PostgreSQL</span><span>RAG</span><span>BM25</span><span>GraphRAG</span><span>Multi-Agent</span><span>OpenAI</span><span>Ollama</span><span>Docker</span>
+            </div>
+            <div class="proj-links">
+                <a href="https://github.com/xxbaiy2-wq" class="proj-link" target="_blank">
+                    <svg viewBox="0 0 24 24" fill="currentColor" width="14" height="14"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+                    GitHub
+                </a>
             </div>
         </div>
 
-        <!-- Project 2 -->
+        <!-- Project 2: Enterprise Customer Service Hub -->
         <div class="proj">
             <div class="proj-head">
                 <h3 data-en="Enterprise Customer Service Hub" data-zh="企业服务中控平台">Enterprise Customer Service Hub</h3>
-                <span class="proj-duration" data-en="Nov 2025 – Present" data-zh="2025.11 – 至今">Nov 2025 – Present</span>
+                <span class="edu-date" data-en="Nov 2025 – Present" data-zh="2025.11 – 至今">Nov 2025 – Present</span>
             </div>
-            <div class="proj-section">
-                <p class="proj-section-title" data-en="Tech Stack" data-zh="技术栈">Tech Stack</p>
-                <p class="proj-desc">OpenAI Agents SDK, LangChain, ChromaDB, RAG, MCP, FastAPI, Docker, SSE</p>
+            <p class="proj-subtitle" data-en="OpenAI Agents SDK + MCP — an intelligent interaction hub covering HR, campus navigation, and policy queries with multi-task recognition, expert routing, and tool invocation." data-zh="OpenAI Agents SDK + MCP —— 覆盖HR、园区导航、政策查询的智能交互中台，支持多任务识别、专家路由和工具调用。">OpenAI Agents SDK + MCP — an intelligent interaction hub covering HR, campus navigation, and policy queries with multi-task recognition, expert routing, and tool invocation.</p>
+
+            <div class="proj-block">
+                <div class="proj-block-title" data-en="Problem" data-zh="问题">Problem</div>
+                <p data-en="Scattered enterprise service portals and lack of unified knowledge output for HR, navigation, and policy queries." data-zh="企业服务入口分散、缺乏统一知识输出，涵盖HR（请假/报销）、园区导航、政策查询（社保/劳动法）。">Scattered enterprise service portals and lack of unified knowledge output for HR, navigation, and policy queries.</p>
             </div>
-            <div class="proj-section">
-                <p class="proj-section-title" data-en="Background" data-zh="项目背景">Background</p>
-                <p class="proj-desc" data-en="Addressing scattered enterprise service portals and lack of unified knowledge output. Built an intelligent interaction hub covering HR (leave/reimbursement), campus navigation, and policy queries (social insurance/labor law) — supporting multi-task recognition, expert routing, tool invocation, and result aggregation." data-zh="解决企业服务入口分散、缺乏统一知识输出的问题。构建智能交互中台，涵盖HR（请假/报销）、园区导航、政策查询（社保/劳动法）—— 支持多任务识别、专家路由、工具调用和结果聚合。">Addressing scattered enterprise service portals and lack of unified knowledge output. Built an intelligent interaction hub covering HR (leave/reimbursement), campus navigation, and policy queries (social insurance/labor law) — supporting multi-task recognition, expert routing, tool invocation, and result aggregation.</p>
+
+            <div class="proj-block">
+                <div class="proj-block-title" data-en="My Contribution" data-zh="核心贡献">My Contribution</div>
+                <ul>
+                    <li data-en="Designed tri-agent architecture (Intent Router, Policy Expert, Service Assistant) using OpenAI Agents SDK with agents_as_tools" data-zh="设计三Agent架构（意图路由、政策专家、服务助手），使用OpenAI Agents SDK的agents_as_tools">Designed tri-agent architecture (Intent Router, Policy Expert, Service Assistant) using OpenAI Agents SDK with agents_as_tools</li>
+                    <li data-en="Built enterprise knowledge base with LangChain + ChromaDB, hybrid retrieval (keyword → vector → rerank) + anti-hallucination" data-zh="构建企业知识库LangChain + ChromaDB，混合检索（关键词→向量→重排序）+ 防幻觉策略">Built enterprise knowledge base with LangChain + ChromaDB, hybrid retrieval (keyword → vector → rerank) + anti-hallucination</li>
+                    <li data-en="Encapsulated 35 tools via MCP — Baidu Map, web search — with SSE streaming and session-based multi-turn memory" data-zh="通过MCP封装35个工具 —— 百度地图、网络搜索 —— SSE流式响应和会话多轮记忆">Encapsulated 35 tools via MCP — Baidu Map, web search — with SSE streaming and session-based multi-turn memory</li>
+                    <li data-en="Completed Docker deployment with intranet penetration for external demo" data-zh="完成Docker部署及内网穿透外网演示">Completed Docker deployment with intranet penetration for external demo</li>
+                </ul>
             </div>
-            <div class="proj-section">
-                <p class="proj-section-title" data-en="Key Contributions" data-zh="核心贡献">Key Contributions</p>
-                <div class="proj-desc">
-                    <ul>
-                        <li data-en="Designed tri-agent architecture (Intent Router, Policy Expert, Service Assistant) using OpenAI Agents SDK with agents_as_tools — sub-agents toolified while maintaining centralized control" data-zh="设计三Agent架构（意图路由、政策专家、服务助手），使用OpenAI Agents SDK的agents_as_tools —— 子Agent工具化同时保持集中控制">Designed tri-agent architecture (Intent Router, Policy Expert, Service Assistant) using OpenAI Agents SDK with agents_as_tools — sub-agents toolified while maintaining centralized control</li>
-                        <li data-en="Built enterprise private knowledge base (employee handbook, reimbursement flows, etc.) with LangChain + ChromaDB, implementing hybrid retrieval (keyword rough → vector fine → rerank) with Prompt anti-hallucination strategies" data-zh="构建企业私有知识库（员工手册、报销流程等），使用LangChain + ChromaDB，实现混合检索（关键词粗筛 → 向量精筛 → 重排序），结合Prompt防幻觉策略">Built enterprise private knowledge base (employee handbook, reimbursement flows, etc.) with LangChain + ChromaDB, implementing hybrid retrieval (keyword rough → vector fine → rerank) with Prompt anti-hallucination strategies</li>
-                        <li data-en="Encapsulated 35 tools via MCP protocol — Baidu Map (campus navigation), web search (social insurance/labor law) — supporting on-demand dynamic invocation with SSE streaming and session-based multi-turn memory" data-zh="通过MCP协议封装35个工具 —— 百度地图（园区导航）、网络搜索（社保/劳动法）—— 支持按需动态调用、SSE流式响应和基于会话的多轮记忆">Encapsulated 35 tools via MCP protocol — Baidu Map (campus navigation), web search (social insurance/labor law) — supporting on-demand dynamic invocation with SSE streaming and session-based multi-turn memory</li>
-                        <li data-en="Established evaluation pipeline: dispatch evaluation set 180 (split by category) — overall accuracy 96.11% (173/180); single-intent policy 100% (60/60), navigation 100% (40/40), reimbursement 93.33% (28/30); multi-intent combined 92.00% (23/25), multi-intent parallel 88.00% (22/25). Retrieval evaluation set 120 — combined retrieval Recall@5=99.17%, MRR=0.9729, significantly outperforming pure vector retrieval (Recall@5=98.03%, MRR=0.8592)" data-zh="建立评测管线：调度评测集180（按类别划分）—— 总准确率96.11%（173/180）；单意图政策100%（60/60）、导航100%（40/40）、报销93.33%（28/30）；多意图组合92.00%（23/25）、多意图并行88.00%（22/25）。检索评测集120 —— 组合检索Recall@5=99.17%，MRR=0.9729，显著优于纯向量检索（Recall@5=98.03%，MRR=0.8592）">Established evaluation pipeline: dispatch evaluation set 180 (split by category) — overall accuracy 96.11% (173/180); single-intent policy 100% (60/60), navigation 100% (40/40), reimbursement 93.33% (28/30); multi-intent combined 92.00% (23/25), multi-intent parallel 88.00% (22/25). Retrieval evaluation set 120 — combined retrieval Recall@5=99.17%, MRR=0.9729, significantly outperforming pure vector retrieval (Recall@5=98.03%, MRR=0.8592)</li>
-                        <li data-en="Achieved continuous conversation context at 100%, single document ingestion to searchable in ~5.82s" data-zh="实现连续对话上下文保持100%，单文档摄入到可检索时间约5.82秒">Achieved continuous conversation context at 100%, single document ingestion to searchable in ~5.82s</li>
-                        <li data-en="Completed Docker deployment with intranet penetration for external demo — forming a reusable local-dev → integration → demo deployment pipeline" data-zh="完成Docker部署及内网穿透外网演示 —— 形成可复用的本地开发 → 集成 → 演示部署管线">Completed Docker deployment with intranet penetration for external demo — forming a reusable local-dev → integration → demo deployment pipeline</li>
-                    </ul>
+
+            <div class="proj-block">
+                <div class="proj-block-title" data-en="Impact &amp; Metrics" data-zh="效果与指标">Impact &amp; Metrics</div>
+                <div class="proj-metrics">
+                    <span class="proj-metric" data-en="96.11% Accuracy (173/180)" data-zh="准确率96.11%（173/180）">96.11% Accuracy (173/180)</span>
+                    <span class="proj-metric" data-en="Policy 100% (60/60)" data-zh="政策100%（60/60）">Policy 100% (60/60)</span>
+                    <span class="proj-metric" data-en="Nav 100% (40/40)" data-zh="导航100%（40/40）">Nav 100% (40/40)</span>
+                    <span class="proj-metric">Recall@5 = 99.17%</span>
+                    <span class="proj-metric">MRR = 0.9729</span>
+                    <span class="proj-metric" data-en="100% Context" data-zh="上下文100%">100% Context</span>
+                    <span class="proj-metric" data-en="~5.82s Ingest" data-zh="~5.82s摄入">~5.82s Ingest</span>
                 </div>
             </div>
-            <div class="proj-tags">
-                <span class="proj-tag">Python</span>
-                <span class="proj-tag">OpenAI Agents SDK</span>
-                <span class="proj-tag">MCP</span>
-                <span class="proj-tag">LangChain</span>
-                <span class="proj-tag">ChromaDB</span>
-                <span class="proj-tag">GraphRAG</span>
-                <span class="proj-tag">RAG</span>
-                <span class="proj-tag">FastAPI</span>
-                <span class="proj-tag">SSE</span>
-                <span class="proj-tag">Docker</span>
+
+            <div class="proj-tech">
+                <span>Python</span><span>OpenAI Agents SDK</span><span>MCP</span><span>LangChain</span><span>ChromaDB</span><span>RAG</span><span>FastAPI</span><span>SSE</span><span>Docker</span>
             </div>
         </div>
 
-        <!-- Project 3 -->
+        <!-- Project 3: OfferPilot -->
         <div class="proj">
             <div class="proj-head">
-                <h3 data-en="OfferPilot — Career Radar" data-zh="OfferPilot — 职途雷达">OfferPilot — Career Radar</h3>
+                <h3>OfferPilot <span style="font-weight:400;color:var(--text3)" data-en="— Career Radar" data-zh="— 职途雷达">— Career Radar</span></h3>
             </div>
-            <div class="proj-section">
-                <p class="proj-desc" data-en="<strong>AI Job-Search Decision Agent</strong> — a full-lifecycle job-hunting assistant for students and early-career professionals. Unlike traditional resume tools or interview bots, OfferPilot is a multi-agent system with <strong>autonomous decision-making</strong> capabilities — understanding user profiles, sensing market trends, diagnosing skill gaps, and autonomously planning and executing job-search strategies." data-zh="<strong>AI求职决策智能体</strong>，面向大学生及职场新人的全链路求职辅助系统。不同于传统的简历工具或面试机器人，OfferPilot 是一个具备<strong>自主决策能力</strong>的多Agent协作系统——能够理解用户画像、感知市场行情、诊断技能差距、自主规划求职策略并执行优化。"><strong>AI Job-Search Decision Agent</strong> — a full-lifecycle job-hunting assistant for students and early-career professionals. Unlike traditional resume tools or interview bots, OfferPilot is a multi-agent system with <strong>autonomous decision-making</strong> capabilities — understanding user profiles, sensing market trends, diagnosing skill gaps, and autonomously planning and executing job-search strategies.</p>
+            <p class="proj-subtitle" data-en="<strong>AI Job-Search Decision Agent</strong> — a full-lifecycle job-hunting assistant for students and early-career professionals. A multi-agent system with autonomous decision-making capabilities: understanding user profiles, sensing market trends, diagnosing skill gaps, and autonomously planning and executing job-search strategies." data-zh="<strong>AI求职决策智能体</strong>，面向大学生及职场新人的全链路求职辅助系统。具备自主决策能力的多Agent协作系统——理解用户画像、感知市场行情、诊断技能差距、自主规划求职策略并执行优化。"><strong>AI Job-Search Decision Agent</strong> — a full-lifecycle job-hunting assistant for students and early-career professionals. A multi-agent system with autonomous decision-making capabilities: understanding user profiles, sensing market trends, diagnosing skill gaps, and autonomously planning and executing job-search strategies.</p>
+
+            <div class="proj-block">
+                <div class="proj-block-title" data-en="Core Features" data-zh="核心功能">Core Features</div>
+                <ul>
+                    <li data-en="<strong>Smart Analysis</strong> — 5-step Pipeline (Profile → Market → Skills → Optimization → Decision), one-click report" data-zh="<strong>智能分析</strong> — 5步Pipeline（画像→市场→技能→优化→决策），一键生成求职决策报告"><strong data-en="Smart Analysis" data-zh="智能分析">Smart Analysis</strong> — 5-step Pipeline (Profile → Market → Skills → Optimization → Decision), one-click report</li>
+                    <li data-en="<strong>AI Mock Interview</strong> — text + voice dual modes, 6 styles, auto-generated follow-ups from resume" data-zh="<strong>AI模拟面试</strong> — 文字+语音双模式，6种面试风格，基于简历自动生成追问"><strong data-en="AI Mock Interview" data-zh="AI模拟面试">AI Mock Interview</strong> — text + voice dual modes, 6 styles, auto-generated follow-ups from resume</li>
+                    <li data-en="<strong>JD Resume Optimization</strong> — paste target JD, auto-calculate match score with targeted revision suggestions" data-zh="<strong>JD定向简历优化</strong> — 粘贴目标JD，自动计算匹配度并给出针对性修改建议"><strong data-en="JD Resume Optimization" data-zh="JD定向简历优化">JD Resume Optimization</strong> — paste target JD, auto-calculate match score with targeted revision suggestions</li>
+                    <li data-en="<strong>Career Radar</strong> — Bing search 30+ pages, extract 7-dimension structured data (salary, skills, education, etc.)" data-zh="<strong>求职雷达</strong> — Bing搜索30+网页，提取薪资/技能/学历等7维度结构化数据"><strong data-en="Career Radar" data-zh="求职雷达">Career Radar</strong> — Bing search 30+ pages, extract 7-dimension structured data (salary, skills, education, etc.)</li>
+                    <li data-en="<strong>Resume Audit</strong> — Truth Guard Agent detects resume inflation risks" data-zh="<strong>简历真实性审计</strong> — Truth Guard Agent 自动检测注水风险"><strong data-en="Resume Audit" data-zh="简历真实性审计">Resume Audit</strong> — Truth Guard Agent detects resume inflation risks</li>
+                </ul>
             </div>
-            <div class="proj-section">
-                <p class="proj-section-title" data-en="Key Features" data-zh="核心功能">Key Features</p>
-                <div class="proj-desc">
-                    <ol style="list-style:decimal;margin:0;padding-left:1.2rem">
-                        <li data-en="<strong>Smart Analysis</strong> — 5-step Pipeline (Profile → Market → Skills → Optimization → Decision), one-click job-search decision report" data-zh="<strong>智能分析</strong> — 5步Pipeline（画像→市场→技能→优化→决策），一键生成求职决策报告"><strong data-en="Smart Analysis" data-zh="智能分析">Smart Analysis</strong> <span data-en="— 5-step Pipeline (Profile → Market → Skills → Optimization → Decision), one-click job-search decision report" data-zh="— 5步Pipeline（画像→市场→技能→优化→决策），一键生成求职决策报告">— 5-step Pipeline (Profile → Market → Skills → Optimization → Decision), one-click job-search decision report</span></li>
-                        <li data-en="<strong>AI Mock Interview</strong> — text + voice dual modes, 6 interview styles, auto-generated follow-up questions based on resume" data-zh="<strong>AI模拟面试</strong> — 支持文字+语音双模式，6种面试风格，基于简历自动生成追问"><strong data-en="AI Mock Interview" data-zh="AI模拟面试">AI Mock Interview</strong> <span data-en="— text + voice dual modes, 6 interview styles, auto-generated follow-up questions based on resume" data-zh="— 支持文字+语音双模式，6种面试风格，基于简历自动生成追问">— text + voice dual modes, 6 interview styles, auto-generated follow-up questions based on resume</span></li>
-                        <li data-en="<strong>JD-Targeted Resume Optimization</strong> — paste target job description, auto-calculate match score and provide targeted revision suggestions" data-zh="<strong>JD定向简历优化</strong> — 粘贴目标岗位JD，自动计算匹配度并给出针对性修改建议"><strong data-en="JD-Targeted Resume Optimization" data-zh="JD定向简历优化">JD-Targeted Resume Optimization</strong> <span data-en="— paste target job description, auto-calculate match score and provide targeted revision suggestions" data-zh="— 粘贴目标岗位JD，自动计算匹配度并给出针对性修改建议">— paste target job description, auto-calculate match score and provide targeted revision suggestions</span></li>
-                        <li data-en="<strong>Career Radar</strong> — search 30+ real web pages via Bing, extract structured data across 7 dimensions: salary, skills, education, etc." data-zh="<strong>求职雷达</strong> — 通过Bing搜索30+真实网页，提取薪资/技能/学历等7维度结构化数据"><strong data-en="Career Radar" data-zh="求职雷达">Career Radar</strong> <span data-en="— search 30+ real web pages via Bing, extract structured data across 7 dimensions: salary, skills, education, etc." data-zh="— 通过Bing搜索30+真实网页，提取薪资/技能/学历等7维度结构化数据">— search 30+ real web pages via Bing, extract structured data across 7 dimensions: salary, skills, education, etc.</span></li>
-                        <li data-en="<strong>Resume Authenticity Audit</strong> — Truth Guard Agent auto-detects resume inflation risks and provides revision suggestions" data-zh="<strong>简历真实性审计</strong> — Truth Guard Agent 自动检测注水风险并给出修订建议"><strong data-en="Resume Authenticity Audit" data-zh="简历真实性审计">Resume Authenticity Audit</strong> <span data-en="— Truth Guard Agent auto-detects resume inflation risks and provides revision suggestions" data-zh="— Truth Guard Agent 自动检测注水风险并给出修订建议">— Truth Guard Agent auto-detects resume inflation risks and provides revision suggestions</span></li>
-                    </ol>
-                </div>
+
+            <div class="proj-block">
+                <div class="proj-block-title" data-en="Highlights" data-zh="技术亮点">Highlights</div>
+                <ul>
+                    <li data-en="Multi-agent autonomous pipeline: LLM → 28+ search queries → 30+ pages → 7-dimension extraction → report" data-zh="多Agent自主管线：LLM → 28+搜索查询 → 30+页面 → 7维度提取 → 报告生成">Multi-agent autonomous pipeline: LLM → 28+ search queries → 30+ pages → 7-dimension extraction → report</li>
+                    <li data-en="Fully async (asyncio.to_thread) — SSE stream never blocked by LLM calls" data-zh="全异步（asyncio.to_thread）—— SSE流不被LLM调用阻塞">Fully async (asyncio.to_thread) — SSE stream never blocked by LLM calls</li>
+                    <li data-en="LLM timeout protection: 180s SIGALRM + rule-engine fallback" data-zh="LLM超时保护：180s SIGALRM + 规则引擎兜底">LLM timeout protection: 180s SIGALRM + rule-engine fallback</li>
+                </ul>
             </div>
-            <div class="proj-section">
-                <p class="proj-section-title" data-en="Tech Architecture" data-zh="技术架构">Tech Architecture</p>
-                <p class="proj-desc" data-en="<strong>Backend:</strong> FastAPI + Python Multi-Agent (Web Search Agent, Smart Analysis Agent, Resume Agent, etc.) + LLM Integration (Mimo v2.5)<br><strong>Frontend:</strong> React SPA + Web Speech API (voice interview) + ECharts WordCloud<br><strong>Deployment:</strong> Nginx reverse proxy + RESTful API" data-zh="<strong>后端：</strong>FastAPI + Python Multi-Agent（含Web Search Agent、Smart Analysis Agent、Resume Agent等） + LLM集成（Mimo v2.5）<br><strong>前端：</strong>React SPA + Web Speech API（语音面试） + ECharts词云<br><strong>部署：</strong>Nginx反向代理 + RESTful API"><strong>Backend:</strong> FastAPI + Python Multi-Agent (Web Search Agent, Smart Analysis Agent, Resume Agent, etc.) + LLM Integration (Mimo v2.5)<br><strong>Frontend:</strong> React SPA + Web Speech API (voice interview) + ECharts WordCloud<br><strong>Deployment:</strong> Nginx reverse proxy + RESTful API</p>
+
+            <div class="proj-tech">
+                <span>Python</span><span>FastAPI</span><span>React</span><span>Multi-Agent</span><span>SSE</span><span>ECharts</span><span>Nginx</span><span>Mimo v2.5</span>
             </div>
-            <div class="proj-section">
-                <p class="proj-section-title" data-en="Highlights" data-zh="项目亮点">Highlights</p>
-                <div class="proj-desc">
-                    <ul>
-                        <li data-en="Multi-agent autonomous decision-making: LLM generates search queries → 28+ queries → 30+ pages crawled → 7-dimension data extraction → LLM report generation" data-zh="多Agent自主决策：LLM生成搜索关键词 → 28+条搜索查询 → 30+页面爬取 → 7维度数据提取 → LLM报告生成">Multi-agent autonomous decision-making: LLM generates search queries → 28+ queries → 30+ pages crawled → 7-dimension data extraction → LLM report generation</li>
-                        <li data-en="Fully async non-blocking: asyncio.to_thread() ensures SSE event stream is never blocked by LLM calls" data-zh="全异步非阻塞：asyncio.to_thread() 保证SSE事件流不被LLM调用阻塞">Fully async non-blocking: asyncio.to_thread() ensures SSE event stream is never blocked by LLM calls</li>
-                        <li data-en="LLM timeout protection: 180s SIGALRM + rule-engine fallback to ensure service availability" data-zh="LLM超时保护：180s SIGALRM + 规则引擎兜底，确保服务可用性">LLM timeout protection: 180s SIGALRM + rule-engine fallback to ensure service availability</li>
-                    </ul>
-                </div>
-            </div>
-            <div class="proj-tags">
-                <a href="http://1.117.61.172/" class="proj-tag" target="_blank" style="text-decoration:none;cursor:pointer" data-en="Live Demo →" data-zh="在线体验 →">Live Demo →</a>
+            <div class="proj-links">
+                <a href="http://1.117.61.172/" class="proj-link" target="_blank" data-en="Live Demo →" data-zh="在线体验 →">Live Demo →</a>
             </div>
         </div>
     </div>
@@ -404,12 +451,28 @@
         <p class="section-label" data-en="Awards" data-zh="荣誉奖项">Awards</p>
         <h2 class="section-title" data-en="Awards &amp; Competitions" data-zh="荣誉奖项">Awards &amp; Competitions</h2>
         <div class="divider"></div>
+        <p class="award-summary" data-en="Selected awards in algorithmic programming, mathematical modeling, and applied research." data-zh="算法编程、数学建模与应用研究领域获奖。">Selected awards in algorithmic programming, mathematical modeling, and applied research.</p>
         <div class="edu-card">
-            <div class="award-item"><strong data-en="LANQIAO Cup" data-zh="蓝桥杯">LANQIAO Cup</strong> <span data-en="— National Excellence Award (国优)" data-zh="—— 全国优秀奖（国优）">— National Excellence Award (国优)</span></div>
-            <div class="award-item"><strong data-en="Mathematical Modeling" data-zh="数学建模竞赛">Mathematical Modeling</strong> <span data-en="— Provincial First Prize (省一等奖)" data-zh="—— 省级一等奖">— Provincial First Prize (省一等奖)</span></div>
-            <div class="award-item"><strong data-en="Market Research" data-zh="市场调查大赛">Market Research</strong> <span data-en="— Provincial First Prize (省一等奖)" data-zh="—— 省级一等奖">— Provincial First Prize (省一等奖)</span></div>
-            <div class="award-item"><strong data-en="Mathematics Competition" data-zh="数学竞赛">Mathematics Competition</strong> <span data-en="— Provincial Second Prize (省二等奖)" data-zh="—— 省级二等奖">— Provincial Second Prize (省二等奖)</span></div>
-            <div class="award-item"><strong data-en="MCM/ICM" data-zh="美国大学生数学建模竞赛">MCM/ICM</strong> <span data-en="— Honorable Mention (H奖)" data-zh="—— 荣誉提名奖（H奖）">— Honorable Mention (H奖)</span></div>
+            <div class="award-item">
+                <div><strong data-en="LANQIAO Cup" data-zh="蓝桥杯">LANQIAO Cup</strong> <span data-en="— National Excellence Award" data-zh="—— 全国优秀奖">— National Excellence Award</span></div>
+                <span class="award-detail" data-en="National (国优)" data-zh="国家级（国优）">National (国优)</span>
+            </div>
+            <div class="award-item">
+                <div><strong data-en="MCM/ICM (美国大学生数学建模竞赛)" data-zh="MCM/ICM（美国大学生数学建模竞赛）">MCM/ICM (美国大学生数学建模竞赛)</strong> <span data-en="— Honorable Mention" data-zh="—— 荣誉提名奖">— Honorable Mention</span></div>
+                <span class="award-detail">H奖</span>
+            </div>
+            <div class="award-item">
+                <div><strong data-en="Mathematical Modeling" data-zh="数学建模竞赛">Mathematical Modeling</strong> <span data-en="— Provincial First Prize" data-zh="—— 省级一等奖">— Provincial First Prize</span></div>
+                <span class="award-detail" data-en="Provincial (省一)" data-zh="省级（省一）">Provincial (省一)</span>
+            </div>
+            <div class="award-item">
+                <div><strong data-en="Market Research" data-zh="市场调查大赛">Market Research</strong> <span data-en="— Provincial First Prize" data-zh="—— 省级一等奖">— Provincial First Prize</span></div>
+                <span class="award-detail" data-en="Provincial (省一)" data-zh="省级（省一）">Provincial (省一)</span>
+            </div>
+            <div class="award-item">
+                <div><strong data-en="Mathematics Competition" data-zh="数学竞赛">Mathematics Competition</strong> <span data-en="— Provincial Second Prize" data-zh="—— 省级二等奖">— Provincial Second Prize</span></div>
+                <span class="award-detail" data-en="Provincial (省二)" data-zh="省级（省二）">Provincial (省二)</span>
+            </div>
         </div>
     </div>
 
@@ -419,13 +482,17 @@
         <h2 class="section-title" data-en="Get in Touch" data-zh="联系方式">Get in Touch</h2>
         <div class="divider"></div>
         <div class="contact-list">
+            <a href="mailto:xiaorh0806@163.com" class="contact-item">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 01-2.06 0L2 7"/></svg>
+                <div><span data-en="Email" data-zh="邮箱">Email</span><small>xiaorh0806@163.com</small></div>
+            </a>
             <a href="https://github.com/xxbaiy2-wq" class="contact-item" target="_blank">
                 <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
                 <div><span>GitHub</span><small>@xxbaiy2-wq</small></div>
             </a>
-            <a href="mailto:xiaorh0806@163.com" class="contact-item">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 01-2.06 0L2 7"/></svg>
-                <div><span data-en="Email" data-zh="邮箱">Email</span><small>xiaorh0806@163.com</small></div>
+            <a href="Ronghui_Xiao_Resume.pdf" class="contact-item" target="_blank">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+                <div><span data-en="Resume" data-zh="简历">Resume</span><small data-en="Download PDF" data-zh="下载 PDF">Download PDF</small></div>
             </a>
         </div>
     </div>
@@ -446,34 +513,23 @@
         currentLang = lang;
         localStorage.setItem('lang', lang);
         document.documentElement.lang = lang === 'zh' ? 'zh-CN' : 'en';
-        document.title = lang === 'zh' ? '校荣慧 - 个人主页' : 'Ronghui Xiao - Personal Site';
-
-        // Update buttons
-        langBtns.forEach(btn => {
-            btn.classList.toggle('active', btn.dataset.lang === lang);
-        });
-
-        // Update all bilingual elements
+        document.title = lang === 'zh' ? '校荣慧 | 大模型应用开发' : 'Ronghui Xiao | LLM Application Developer';
+        langBtns.forEach(btn => btn.classList.toggle('active', btn.dataset.lang === lang));
         document.querySelectorAll('[data-en][data-zh]').forEach(el => {
             el.innerHTML = el.getAttribute('data-' + lang);
         });
     }
 
-    langBtns.forEach(btn => {
-        btn.addEventListener('click', () => setLang(btn.dataset.lang));
-    });
-
+    langBtns.forEach(btn => btn.addEventListener('click', () => setLang(btn.dataset.lang)));
     setLang(currentLang);
 
-    // Scroll spy for nav
+    // Scroll spy
     const sections = document.querySelectorAll('[id]');
     const navItems = document.querySelectorAll('.nav-item[href^="#"]');
     const observer = new IntersectionObserver(entries => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
-                navItems.forEach(item => {
-                    item.classList.toggle('active', item.getAttribute('href') === '#' + entry.target.id);
-                });
+                navItems.forEach(item => item.classList.toggle('active', item.getAttribute('href') === '#' + entry.target.id));
             }
         });
     }, { rootMargin: '-30% 0px -60% 0px' });
