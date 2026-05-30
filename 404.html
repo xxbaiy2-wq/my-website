@@ -1,13 +1,13 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>404 - 页面未找到</title>
+    <title>404 - Page Not Found</title>
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans SC", sans-serif;
+            font-family: 'Inter', -apple-system, "Noto Sans SC", "PingFang SC", sans-serif;
             background: #0f172a;
             color: #e2e8f0;
             display: flex;
@@ -16,31 +16,83 @@
             min-height: 100vh;
             text-align: center;
         }
+        .container { max-width: 480px; padding: 2rem; }
         h1 {
             font-size: 6rem;
-            background: linear-gradient(135deg, #38bdf8, #a78bfa);
+            background: linear-gradient(135deg, #2d9d78, #38bdf8);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
             margin-bottom: 0.5rem;
         }
         p { color: #94a3b8; margin-bottom: 1.5rem; font-size: 1.1rem; }
-        a {
-            color: #38bdf8;
+        .btn {
+            display: inline-block;
+            color: #2d9d78;
             text-decoration: none;
-            border: 1.5px solid #334155;
+            border: 1.5px solid #2d9d78;
             padding: 0.6rem 1.5rem;
             border-radius: 8px;
-            transition: border-color 0.2s;
+            transition: all 0.2s;
+            font-size: 0.9rem;
+            margin: 0 0.3rem;
         }
-        a:hover { border-color: #38bdf8; }
+        .btn:hover { background: #2d9d78; color: #fff; }
+        .lang-toggle {
+            margin-top: 2rem;
+            display: flex;
+            justify-content: center;
+            gap: 4px;
+        }
+        .lang-btn {
+            font-size: 12px;
+            font-weight: 600;
+            color: #64748b;
+            padding: 4px 12px;
+            border-radius: 4px;
+            border: 1px solid transparent;
+            background: transparent;
+            cursor: pointer;
+            transition: all 0.2s;
+            font-family: inherit;
+        }
+        .lang-btn.active { color: #2d9d78; border-color: #2d9d78; }
+        .lang-btn:hover { color: #2d9d78; }
     </style>
 </head>
 <body>
-    <div>
+    <div class="container">
         <h1>404</h1>
-        <p>你访问的页面不存在</p>
-        <a href="/">返回首页</a>
+        <p data-en="The page you are looking for does not exist." data-zh="你访问的页面不存在。">The page you are looking for does not exist.</p>
+        <div>
+            <a href="/" class="btn" data-en="Back to Home" data-zh="返回首页">Back to Home</a>
+            <a href="mailto:xiaorh0806@163.com" class="btn" data-en="Contact Me" data-zh="联系我">Contact Me</a>
+        </div>
+        <div class="lang-toggle">
+            <button class="lang-btn active" data-lang="en">EN</button>
+            <button class="lang-btn" data-lang="zh">中</button>
+        </div>
     </div>
+
+    <script>
+    (function() {
+        const langBtns = document.querySelectorAll('.lang-btn');
+        let currentLang = localStorage.getItem('lang') || 'en';
+
+        function setLang(lang) {
+            currentLang = lang;
+            localStorage.setItem('lang', lang);
+            document.documentElement.lang = lang === 'zh' ? 'zh-CN' : 'en';
+            document.title = lang === 'zh' ? '404 - 页面未找到' : '404 - Page Not Found';
+            langBtns.forEach(btn => btn.classList.toggle('active', btn.dataset.lang === lang));
+            document.querySelectorAll('[data-en][data-zh]').forEach(el => {
+                el.innerHTML = el.getAttribute('data-' + lang);
+            });
+        }
+
+        langBtns.forEach(btn => btn.addEventListener('click', () => setLang(btn.dataset.lang)));
+        setLang(currentLang);
+    })();
+    </script>
 </body>
 </html>
